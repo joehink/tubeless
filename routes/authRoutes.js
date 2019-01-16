@@ -17,7 +17,7 @@ module.exports = app => {
     // Send back to landing page
     app.get('/api/logout', (req, res) => {
         req.logout();
-        res.redirect("/landing")
+        res.redirect("/")
     })
 
     // When route hit, send back JSON data for user
