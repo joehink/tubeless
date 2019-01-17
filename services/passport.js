@@ -33,7 +33,7 @@ passport.use(new YoutubeV3Strategy({
         // if the users saved accessToken does not equal the current accessToken
         if (existingUser.accessToken !== accessToken) {
           // update existing user with refreshToken
-            existingUser = await User.findByIdAndUpdate(existingUser.id, { accessToken: refreshToken })
+            existingUser = await User.findByIdAndUpdate(existingUser.id, { accessToken })
         }
         return done(null, existingUser);
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchUser } from "../actions";
+import { fetchUser } from "../actions"
 
 import Landing from "./landing/Landing";
 import MainNav from "./nav/MainNav";

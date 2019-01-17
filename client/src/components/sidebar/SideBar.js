@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { fetchSubscriptions } from "../../actions"
+
 import List from "../common/List";
 
 class SideBar extends Component {
   componentDidMount() {
-
+    this.props.fetchSubscriptions(this.props.auth.accessToken)
   }
   render() {
     return (
@@ -17,7 +19,10 @@ class SideBar extends Component {
 }
 
 const mapStateToProps = ({ auth }) => {
-  return ({ auth });
+  return { auth };
 };
 
-export default connect(mapStateToProps)(SideBar);
+export default connect(
+  mapStateToProps,
+  { fetchSubscriptions }
+)(SideBar);
