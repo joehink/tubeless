@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.json",
+    "start": "node app.js",
     "server": "nodemon app.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -14,6 +14,8 @@
     "cookie-session": "^2.0.0-beta.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "google-auth-library": "^3.0.0",
+    "googleapis": "^36.0.0",
     "mongoose": "^5.3.14",
     "morgan": "~1.9.0",
     "nodemon": "^1.18.7",

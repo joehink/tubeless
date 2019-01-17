@@ -21,30 +21,33 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new YoutubeV3Strategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
-    callbackURL: '/auth/google/callback',
-    scope: ['https://www.googleapis.com/auth/youtube.readonly']
-}, async (accessToken, refreshToken, profile, done) => {
-    // Take profile ID returned from auth process
-    // Use it to find the user in our db with that ID
-    let existingUser = await User.findOne({ googleID: profile.id });
-
-    // If there is a user in our db with that ID
-    if (existingUser) {
-        // if the users saved accessToken does not equal the current accessToken
-        if (existingUser.accessToken !== accessToken) {
-          // update existing user with refreshToken
-            existingUser = await User.findByIdAndUpdate(existingUser.id, { accessToken })
-        }
-        return done(null, existingUser);
+    callbackURL: keys.callbackURL,
+    scope: ['https://www.googleapis.com/auth/youtube.readonly'],
+    authorizationParams: {
+      access_type : 'offline'
     }
+}, (accessToken, refreshToken, profile, done) => {
+  console.log('hi');
+    process.nextTick(async () => {
+      // Take profile ID returned from auth process
+      // Use it to find the user in our db with that ID
+      let existingUser = await User.findOne({ googleID: profile.id });
 
-    // If there is not an existing user, create a new one
-    const user = await new User({
-        googleID: profile.id,
-        profileIMG: profile._json.items[0].snippet.thumbnails.default.url,
-        accessToken: accessToken
-    }).save();
+      // If there is a user in our db with that ID
+      if (existingUser) {
+        existingUser = await User.findByIdAndUpdate(existingUser.id, { accessToken, refreshToken })
+          return done(null, existingUser);
+      }
 
-    done(null, user);
-})
+      // If there is not an existing user, create a new one
+      const user = await new User({
+          googleID: profile.id,
+          profileIMG: profile._json.items[0].snippet.thumbnails.default.url,
+          accessToken: accessToken,
+          refreshToken: refreshToken
+      }).save();
+
+      done(null, user);
+    });
+  })
 )

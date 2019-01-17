@@ -16,7 +16,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-            // MainNav and SideBar are always present
             <MainNav />
             <SideBar />
         </div>

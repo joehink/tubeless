@@ -1,4 +1,9 @@
-const passport = require('passport')
+const passport = require('passport');
+const { google } = require('googleapis');
+const OAuth2 = google.auth.OAuth2;
+const { userLoggedIn } = require('../middlewares/index');
+
+const keys = require('../config/keys');
 
 module.exports = app => {
 
@@ -21,7 +26,24 @@ module.exports = app => {
     })
 
     // When route hit, send back JSON data for user
-    app.get('/api/current_user', (req, res) => {
-        res.send(req.user);
+    app.get('/api/current_user', userLoggedIn, (req, res) => {
+      res.send(req.user)
+
+      
+      // var oauth2Client = OAuth2(
+      //   keys.clientID,
+      //   keys.clientSecret,
+      //   keys.callbackURL
+      // );
+      //
+      // oauth2Client.credentials = {
+      //   access_token: req.user.access_token,
+      //   refresh_token: req.user.refresh_token
+      // };
+      //
+      // console.log(google.youtube({
+      //     version: 'v3',
+      //     auth: oauth2Client
+      // }));
     })
 }
