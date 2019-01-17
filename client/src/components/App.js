@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchUser } from "../actions";
 
+import Landing from "./landing/Landing";
 import MainNav from "./nav/MainNav";
 
 class App extends Component {
@@ -10,23 +11,26 @@ class App extends Component {
     this.props.fetchUser();
   }
   renderApp() {
-    console.log(this.props.auth);
+    return (
+      <Router>
+        <div>
+            <MainNav />
+        </div>
+      </Router>
+    )
+  }
+  shouldRenderApp() {
     switch (this.props.auth) {
       case null:
         return <div></div>
       case false:
-        return <div>Hey Landing!</div>
+        return <Landing />
       default:
-        return <div>Hey App!</div>
+        return this.renderApp();
     }
   }
   render() {
-    return (
-      <div>
-        <MainNav isLoggedIn={this.props.auth}/>
-        { this.renderApp() }
-      </div>
-    )
+    return this.shouldRenderApp();
   }
 };
 
