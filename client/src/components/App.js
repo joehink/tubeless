@@ -5,6 +5,7 @@ import { fetchUser } from "../actions";
 
 import Landing from "./landing/Landing";
 import MainNav from "./nav/MainNav";
+import SideBar from "./sidebar/SideBar";
 
 class App extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class App extends Component {
       <Router>
         <div>
             <MainNav />
+            <SideBar />
         </div>
       </Router>
     )
