@@ -9,12 +9,14 @@ import SideBar from "./sidebar/SideBar";
 
 class App extends Component {
   componentDidMount() {
+    // when app mounts fetch to see if there is a user logged in
     this.props.fetchUser();
   }
   renderApp() {
     return (
       <Router>
         <div>
+            // MainNav and SideBar are always present
             <MainNav />
             <SideBar />
         </div>
@@ -24,10 +26,13 @@ class App extends Component {
   shouldRenderApp() {
     switch (this.props.auth) {
       case null:
+        // waiting for fetchUser to complete
         return <div></div>
       case false:
+        // no user logged in
         return <Landing />
       default:
+        // auth is not false or null (success)
         return this.renderApp();
     }
   }
