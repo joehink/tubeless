@@ -38,8 +38,8 @@ export const fetchSubscriptions = accessToken => async dispatch => {
       }
     );
 
-    console.log(res);
-    dispatch({ type: FETCH_SUBSCRIPTIONS_SUCCESS, payload: res.data });
+    // dispatch action that returns subscriptions
+    dispatch({ type: FETCH_SUBSCRIPTIONS_SUCCESS, payload: res.data.items });
 
   } catch(error) {
     // something went wrong with the request

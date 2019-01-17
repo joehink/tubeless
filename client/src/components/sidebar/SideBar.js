@@ -9,10 +9,22 @@ class SideBar extends Component {
   componentDidMount() {
     this.props.fetchSubscriptions(this.props.auth.accessToken)
   }
+  renderSubscriptions() {
+    switch (this.props.auth.subscriptions) {
+      case null:
+        return <div>Spinner</div>;
+      case undefined:
+        return <div>Spinner</div>;
+      case false:
+        return <div>No Subscriptions</div>;
+      default:
+        return <List collection={this.props.auth.subscriptions} />
+    }
+  }
   render() {
     return (
       <aside>
-        SideBar
+        { this.renderSubscriptions() }
       </aside>
     );
   }

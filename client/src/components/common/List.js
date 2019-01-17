@@ -2,9 +2,11 @@ import React, { Component } from "react";
 
 class List extends Component {
   renderListItems() {
-    this.props.collection.map(element => {
+    return this.props.collection.map(element => {
       return (
-        <li></li>
+        <li key={element.id}>
+          {element.snippet.title}
+        </li>
       )
     })
   }
