@@ -1,11 +1,21 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux"
 
-const SearchScreen = () => {
-  return (
-    <div>
-      SearchScreen
-    </div>
-  )
+class SearchScreen extends Component {
+  renderSearchResults() {
+
+  }
+  render() {
+    return (
+      <div>
+        {this.renderSearchResults()}
+      </div>
+    )
+  }
 }
 
-export default SearchScreen;
+const mapStateToProps = ({ search }) => {
+  return { search }
+}
+
+export default connect(mapStateToProps)(SearchScreen);
