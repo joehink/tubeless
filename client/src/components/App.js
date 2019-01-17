@@ -6,6 +6,7 @@ import { fetchUser } from "../actions"
 import Landing from "./landing/Landing";
 import MainNav from "./nav/MainNav";
 import SideBar from "./sidebar/SideBar";
+import SearchScreen from "./search/SearchScreen";
 
 class App extends Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class App extends Component {
         <div>
             <MainNav />
             <SideBar />
+            <Route path="/search/:searchTerm" component={SearchScreen} />
         </div>
       </Router>
     )
