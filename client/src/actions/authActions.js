@@ -19,31 +19,3 @@ export const fetchUser = () => async dispatch => {
     dispatch({ type: FETCH_USER_FAILURE })
   }
 }
-
-export const fetchSubscriptions = accessToken => async dispatch => {
-  try {
-    // Begin request for subscriptions
-    dispatch({ type: FETCHING_SUBSCRIPTIONS });
-
-    // Make a request to the YouTube API for the user's subscriptions
-    const res = await axios.get(
-      "https://www.googleapis.com/youtube/v3/subscriptions",
-      {
-        params: {
-          access_token: accessToken,
-          part: "snippet",
-          mine: true,
-          maxResults: 50
-        }
-      }
-    );
-
-    // dispatch action that returns subscriptions
-    dispatch({ type: FETCH_SUBSCRIPTIONS_SUCCESS, payload: res.data.items });
-
-  } catch(error) {
-    // something went wrong with the request
-    console.error(error);
-    dispatch({ type: FETCH_SUBSCRIPTIONS_FAILURE })
-  }
-}

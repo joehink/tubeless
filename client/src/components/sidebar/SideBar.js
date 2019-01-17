@@ -10,15 +10,13 @@ class SideBar extends Component {
     this.props.fetchSubscriptions(this.props.auth.accessToken)
   }
   renderSubscriptions() {
-    switch (this.props.auth.subscriptions) {
+    switch (this.props.subscriptions) {
       case null:
-        return <div>Spinner</div>;
-      case undefined:
         return <div>Spinner</div>;
       case false:
         return <div>No Subscriptions</div>;
       default:
-        return <List collection={this.props.auth.subscriptions} />
+        return <List collection={this.props.subscriptions} />
     }
   }
   render() {
@@ -30,8 +28,8 @@ class SideBar extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
-  return { auth };
+const mapStateToProps = ({ auth, subscriptions }) => {
+  return { auth, subscriptions };
 };
 
 export default connect(
