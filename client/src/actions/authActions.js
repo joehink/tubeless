@@ -2,9 +2,6 @@ import axios from "axios";
 import {
   FETCH_USER_SUCCESS,
   FETCH_USER_FAILURE,
-  FETCHING_SUBSCRIPTIONS,
-  FETCH_SUBSCRIPTIONS_SUCCESS,
-  FETCH_SUBSCRIPTIONS_FAILURE
 } from "./types";
 
 export const fetchUser = () => async dispatch => {

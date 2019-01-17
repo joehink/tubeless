@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { fetchSubscriptions } from "../../actions"
 
-import List from "../common/List";
+import List from "../common/list/List";
 
 class SideBar extends Component {
   componentDidMount() {
