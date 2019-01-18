@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { searchVideos } from "../../actions";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -11,6 +13,12 @@ class SearchBar extends Component {
   handleSearch(event) {
     // stop page from refreshing when form is submitted
     event.preventDefault();
+
+    // search for videos
+    this.props.searchVideos(
+      this.props.auth.accessToken, this.state.searchTerm, this.props.search.video.pageToken
+    );
+
     // redirect user to '/search/whateverTheyTypedIn'
     this.props.history.push(`/search/${this.state.searchTerm}`);
   }
@@ -30,5 +38,9 @@ class SearchBar extends Component {
   }
 }
 
+const mapStateToProps = ({ search, auth }) => {
+  return { search, auth }
+}
+
 // export with withRouter so this.props.history is available
-export default withRouter(SearchBar);
+export default withRouter(connect(mapStateToProps, { searchVideos })(SearchBar));

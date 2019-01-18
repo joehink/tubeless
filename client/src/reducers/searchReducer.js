@@ -6,34 +6,17 @@ import {
 } from "../actions/types";
 
 const INITIAL_STATE = {
-  video: {
+    loading: false,
     results: null,
     pageToken: ''
-  },
-  channel: {
-    results: null,
-    pageToken: ''
-  }
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_VIDEO_SEARCH_SUCCESS:
-      return {
-        ...state,
-        video: {
-          results: action.payload.results,
-          pageToken: action.payload.pageToken
-        }
-      };
+      return;
     case FETCH_VIDEO_SEARCH_FAILURE:
-      return {
-        ...state,
-        video: {
-          results: false,
-          pageToken: ''
-        }
-      }
+      return;
     default:
       return state;
   }
