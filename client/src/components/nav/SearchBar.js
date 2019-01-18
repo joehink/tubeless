@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { searchVideos } from "../../actions";
+import { searchVideos, clearSearchResults } from "../../actions";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -14,9 +14,13 @@ class SearchBar extends Component {
     // stop page from refreshing when form is submitted
     event.preventDefault();
 
+    // Clears results before every new search
+    this.props.clearSearchResults();
+
     // search for videos
     this.props.searchVideos(
-      this.props.auth.accessToken, this.state.searchTerm, this.props.search.video.pageToken
+      this.props.auth.accessToken, this.state.searchTerm,
+      this.props.search.pageToken
     );
 
     // redirect user to '/search/whateverTheyTypedIn'
@@ -43,4 +47,4 @@ const mapStateToProps = ({ search, auth }) => {
 }
 
 // export with withRouter so this.props.history is available
-export default withRouter(connect(mapStateToProps, { searchVideos })(SearchBar));
+export default withRouter(connect(mapStateToProps, { searchVideos, clearSearchResults })(SearchBar));

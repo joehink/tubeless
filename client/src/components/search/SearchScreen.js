@@ -4,7 +4,7 @@ import VideoReultList from "./VideoResultList";
 
 class SearchScreen extends Component {
   renderSearchResults() {
-
+    console.log(this.props.search);
   }
   render() {
     return (
