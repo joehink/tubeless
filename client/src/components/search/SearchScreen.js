@@ -7,7 +7,8 @@ class SearchScreen extends Component {
   componentDidMount() {
     // search for videos based on the term in url params
     this.props.searchVideos(
-      this.props.auth.accessToken, this.props.match.params.searchTerm,
+      this.props.auth.accessToken,
+      this.props.match.params.searchTerm,
       this.props.search.pageToken
     );
   }
