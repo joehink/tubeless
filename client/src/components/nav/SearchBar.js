@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { searchVideos, clearSearchResults } from "../../actions";
+import { clearSearchResults } from "../../actions";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -16,12 +16,6 @@ class SearchBar extends Component {
 
     // Clears results before every new search
     this.props.clearSearchResults();
-
-    // search for videos
-    this.props.searchVideos(
-      this.props.auth.accessToken, this.state.searchTerm,
-      this.props.search.pageToken
-    );
 
     // redirect user to '/search/whateverTheyTypedIn'
     this.props.history.push(`/search/${this.state.searchTerm}`);
@@ -42,9 +36,5 @@ class SearchBar extends Component {
   }
 }
 
-const mapStateToProps = ({ search, auth }) => {
-  return { search, auth }
-}
-
 // export with withRouter so this.props.history is available
-export default withRouter(connect(mapStateToProps, { searchVideos, clearSearchResults })(SearchBar));
+export default withRouter(connect(null, { clearSearchResults })(SearchBar));

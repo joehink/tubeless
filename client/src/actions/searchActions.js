@@ -9,27 +9,64 @@ import {
   CLEAR_SEARCH_RESULTS
 } from "./types";
 
-export const searchVideos = (accessToken, searchTerm, pageToken = '') => async dispatch => {
-  try {
-    dispatch({ type: SEARCHING_FOR_VIDEOS });
+export const searchVideos = (accessToken, searchTerm, pageToken = '') => {
+  return async dispatch => {
+    try {
+      // search request is about to begin
+      dispatch({ type: SEARCHING_FOR_VIDEOS });
 
-    const searchRes = await axios.get('https://www.googleapis.com/youtube/v3/search', {
-      params: {
-        access_token: accessToken,
-        part: "snippet",
-        type: "video",
-        maxResults: 25,
-        q: searchTerm,
-        pageToken: pageToken
-      }
-    })
+      /*===================================================
+      Make search request for 25 videos
+      if pageToken is blank (it will be on first request for new searchTerm)
+      API will still return first page of results
+      pageToken will be given value after first request
+      and subsequent requests will return next page of results
+      ===================================================*/
+      const searchRes = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+        params: {
+          access_token: accessToken,
+          part: "snippet",
+          type: "video",
+          maxResults: 25,
+          q: searchTerm,
+          pageToken: pageToken
+        }
+      });
 
-    dispatch({ type: FETCH_VIDEO_SEARCH_SUCCESS, payload: searchRes.data.items })
-  } catch(error) {
-    console.error(error);
-    dispatch({ type: FETCH_VIDEO_SEARCH_FAILURE })
-  }
-};
+      // create array of IDs of videos from search request
+      const videoIds = searchRes.data.items.map(video => {
+        return video.id.videoId;
+      })
+
+      // save token for next page of search results
+      const pageToken = searchRes.data.nextPageToken;
+
+
+    /*=====================================================
+      search request does not return number of views per video
+      so another request must be made for each video
+      provide array of IDs to return all videos from search in one request
+      ===================================================================*/
+      const videoRes = await axios('https://www.googleapis.com/youtube/v3/videos', {
+        params: {
+          access_token: accessToken,
+          part: "snippet,statistics",
+          id: videoIds.toString()
+        }
+      })
+
+      // video request returned array of videos
+      dispatch({ type: FETCH_VIDEO_SEARCH_SUCCESS, payload: { results: videoRes.data.items, pageToken}})
+
+    } catch(error) {
+      console.error(error);
+      // something went wrong with request
+      dispatch({ type: FETCH_VIDEO_SEARCH_FAILURE })
+    }
+  };
+}
+
+
 
 export const searchChannels = () => async dispatch => {
   try {

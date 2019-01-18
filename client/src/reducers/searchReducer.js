@@ -17,21 +17,26 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SEARCHING_FOR_VIDEOS:
+      // video search just started
       return {
         ...state,
         loading: true
       };
     case FETCH_VIDEO_SEARCH_SUCCESS:
+      // video search request returned results
       return {
         loading: false,
-        results: [...state.results, ...action.payload]
+        results: [...state.results, ...action.payload.results],
+        pageToken: action.payload.pageToken
       };
     case FETCH_VIDEO_SEARCH_FAILURE:
+      // Something went wrong with request
       return {
         ...state,
         loading: false
       };
     case CLEAR_SEARCH_RESULTS:
+      // return search state to the INITIAL_STATE
       return INITIAL_STATE;
     default:
       return state;
