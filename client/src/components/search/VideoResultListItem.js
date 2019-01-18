@@ -5,7 +5,10 @@ class VideoResultListItem extends Component {
     const { snippet, statistics } = this.props.result;
     return (
       <div>
-        <img src={snippet.thumbnails.medium.url} />
+        <img
+          src={snippet.thumbnails.medium.url}
+          alt={snippet.title}
+        />
         <div>
           <h3>{snippet.title}</h3>
           <p>
