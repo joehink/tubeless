@@ -27,7 +27,6 @@ passport.use(new YoutubeV3Strategy({
       access_type : 'offline'
     }
 }, (accessToken, refreshToken, profile, done) => {
-  console.log('hi');
     process.nextTick(async () => {
       // Take profile ID returned from auth process
       // Use it to find the user in our db with that ID
