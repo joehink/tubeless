@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux"
 import VideoResultList from "./VideoResultList";
-import { searchVideos } from "../../actions";
+import ChannelResultList from "./ChannelResultList";
+import { searchVideos, searchChannels } from "../../actions";
 
 class SearchScreen extends Component {
   componentDidMount() {
@@ -9,7 +10,14 @@ class SearchScreen extends Component {
     this.props.searchVideos(
       this.props.auth.accessToken,
       this.props.match.params.searchTerm,
-      this.props.search.pageToken
+      this.props.search.video.pageToken
+    );
+
+    // search for channels based on the term in url params
+    this.props.searchChannels(
+      this.props.auth.accessToken,
+      this.props.match.params.searchTerm,
+      this.props.search.channel.pageToken
     );
   }
   componentDidUpdate(prevProps) {
@@ -23,23 +31,52 @@ class SearchScreen extends Component {
       // search for new videos
       this.props.searchVideos(
         this.props.auth.accessToken, this.props.match.params.searchTerm,
-        this.props.search.pageToken
+        this.props.search.video.pageToken
+      );
+
+      // search for new channels
+      this.props.searchChannels(
+        this.props.auth.accessToken,
+        this.props.match.params.searchTerm,
+        this.props.search.channel.pageToken
       );
     }
   }
-  renderSearchResults() {
-    if (this.props.search.loading) {
-      return <div>Spinner</div>
-    }
+  renderVideoSearchResults() {
+    if (this.props.search.video.loading) {
+      return [
+        <VideoResultList
+          key="1"
+          results={this.props.search.video.results}
+        />,
+        <div key="2">Spinner</div>
+      ]
+    } else
 
     return <VideoResultList
-              results={this.props.search.results}
+              results={this.props.search.video.results}
+            />
+  }
+  renderChannelSearchResults() {
+    if (this.props.search.channel.loading) {
+      return [
+        <ChannelResultList
+          key="3"
+          results={this.props.search.channel.results}
+        />,
+        <div key="4">Spinner</div>
+      ]
+    } else
+
+    return <ChannelResultList
+              results={this.props.search.channel.results}
             />
   }
   render() {
     return (
       <div>
-        {this.renderSearchResults()}
+        {this.renderChannelSearchResults()}
+        {this.renderVideoSearchResults()}
       </div>
     )
   }
@@ -49,4 +86,4 @@ const mapStateToProps = ({ search, auth }) => {
   return { search, auth }
 }
 
-export default connect(mapStateToProps, { searchVideos })(SearchScreen);
+export default connect(mapStateToProps, { searchVideos, searchChannels })(SearchScreen);

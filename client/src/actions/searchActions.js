@@ -68,11 +68,33 @@ export const searchVideos = (accessToken, searchTerm, pageToken = '') => {
 
 
 
-export const searchChannels = () => async dispatch => {
+export const searchChannels = (accessToken, searchTerm, pageToken = '') => async dispatch => {
   try {
+    // search request is about to begin
+    dispatch({ type: SEARCHING_FOR_CHANNELS });
 
+    const res = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+      params: {
+        access_token: accessToken,
+        part: "snippet",
+        type: "channel",
+        maxResults: 25,
+        q: searchTerm,
+        pageToken: pageToken
+      }
+    });
+
+    console.log(res);
+
+    // save token for next page of search results
+    const pageToken = res.data.nextPageToken;
+
+    // search request returned array of channels
+    dispatch({ type: FETCH_CHANNEL_SEARCH_SUCCESS, payload: { results: res.data.items, pageToken}})
   } catch(error) {
-
+    console.error(error);
+    // something went wrong with request
+    dispatch({ type: FETCH_CHANNEL_SEARCH_FAILURE })
   }
 };
 

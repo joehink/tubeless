@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 
 class ChannelResultList extends Component {
+  renderResults() {
+    console.log(this.props.results);
+  }
   render() {
     return (
-      <div>ChannelResultList</div>
+      <div>{ this.renderResults() }</div>
     )
   }
 }
