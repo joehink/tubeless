@@ -5,7 +5,10 @@ class ListItem extends Component {
   renderThumbnail() {
     // If a thumbnail is provided
     if (this.props.thumbnail) {
-      return  <img src={this.props.thumbnail} />
+      return  <img
+                src={this.props.thumbnail}
+                alt={this.props.title}
+              />
     }
   }
   render() {
