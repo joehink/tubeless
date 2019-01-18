@@ -39,7 +39,7 @@ export const searchVideos = (accessToken, searchTerm, pageToken = '') => {
       })
 
       // save token for next page of search results
-      const pageToken = searchRes.data.nextPageToken;
+      const nextPageToken = searchRes.data.nextPageToken;
 
 
     /*=====================================================
@@ -56,7 +56,7 @@ export const searchVideos = (accessToken, searchTerm, pageToken = '') => {
       })
 
       // video request returned array of videos
-      dispatch({ type: FETCH_VIDEO_SEARCH_SUCCESS, payload: { results: videoRes.data.items, pageToken}})
+      dispatch({ type: FETCH_VIDEO_SEARCH_SUCCESS, payload: { results: videoRes.data.items, pageToken: nextPageToken}})
 
     } catch(error) {
       console.error(error);
@@ -84,13 +84,11 @@ export const searchChannels = (accessToken, searchTerm, pageToken = '') => async
       }
     });
 
-    console.log(res);
-
     // save token for next page of search results
-    const pageToken = res.data.nextPageToken;
+    const nextPageToken = res.data.nextPageToken;
 
     // search request returned array of channels
-    dispatch({ type: FETCH_CHANNEL_SEARCH_SUCCESS, payload: { results: res.data.items, pageToken}})
+    dispatch({ type: FETCH_CHANNEL_SEARCH_SUCCESS, payload: { results: res.data.items, pageToken: nextPageToken}})
   } catch(error) {
     console.error(error);
     // something went wrong with request
