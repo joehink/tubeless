@@ -1,11 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux"
-import { fetchChannelVideos, clearChannel } from "../../actions";
+import {
+  fetchChannelVideos,
+  clearChannel,
+  fetchChannel
+} from "../../actions";
 import VideoGrid from "./VideoGrid";
 
 class ChannelScreen extends Component {
   componentDidMount() {
     this.props.clearChannel();
+
+    this.props.fetchChannel(
+      this.props.auth.accessToken,
+      this.props.match.params.id
+    )
+
     // search for videos based on the channelId in url params
     this.props.fetchChannelVideos(
       this.props.auth.accessToken,
@@ -21,6 +31,12 @@ class ChannelScreen extends Component {
     // if the new id is different from th old id
     if (oldId !== newId) {
       this.props.clearChannel();
+
+      this.props.fetchChannel(
+        this.props.auth.accessToken,
+        this.props.match.params.id
+      )
+
       // search for new videos
       this.props.fetchChannelVideos(
         this.props.auth.accessToken,
@@ -44,6 +60,7 @@ class ChannelScreen extends Component {
             />
   }
   render() {
+    console.log(this.props.channel);
     return (
       <div>
         {this.renderChannelVideos()}
@@ -56,4 +73,11 @@ const mapStateToProps = ({ auth, channel, subscriptions }) => {
   return { auth, channel, subscriptions }
 }
 
-export default connect(mapStateToProps, { fetchChannelVideos, clearChannel })(ChannelScreen);
+export default connect(
+  mapStateToProps,
+  {
+    fetchChannel,
+    fetchChannelVideos,
+    clearChannel,
+  }
+)(ChannelScreen);

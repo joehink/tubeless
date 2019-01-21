@@ -3,8 +3,39 @@ import {
   FETCHING_CHANNEL_VIDEOS,
   FETCH_CHANNEL_VIDEOS_SUCCESS,
   FETCH_CHANNEL_VIDEOS_FAILURE,
+  FETCHING_CHANNEL,
+  FETCH_CHANNEL_SUCCESS,
+  FETCH_CHANNEL_FAILURE,
   CLEAR_CHANNEL
 } from "../actions/types";
+
+export const fetchChannel = (accessToken, channelId) => {
+  return async dispatch => {
+    try {
+      dispatch({ type: FETCHING_CHANNEL });
+      
+      const res = await axios.get('https://www.googleapis.com/youtube/v3/channels', {
+        params: {
+          access_token: accessToken,
+          part: "snippet",
+          id: channelId
+        }
+      });
+
+      const { snippet } = res.data.items[0];
+      dispatch({
+        type: FETCH_CHANNEL_SUCCESS,
+        payload: {
+          thumbnail: snippet.thumbnails.default.url,
+          title: snippet.title
+        }
+      })
+    } catch (error) {
+      console.error(error);
+      dispatch({ type: FETCH_CHANNEL_FAILURE });
+    }
+  }
+}
 
 export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
   return async dispatch => {
