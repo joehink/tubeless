@@ -6,7 +6,6 @@ class List extends Component {
   renderListItems() {
     // takes prop collection, which is an array
     return this.props.collection.map(element => {
-      console.log(element.snippet.resourceId.channelId);
       // return a ListItem for each element in array
       return <ListItem
               key={element.id}

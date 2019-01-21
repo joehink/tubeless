@@ -24,12 +24,41 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
           part: "snippet",
           type: "video",
           maxResults: 25,
+          order: "date",
           channelId,
           pageToken
         }
       });
 
-      console.log(searchRes);
+      // create array of IDs of videos from search request
+      const videoIds = searchRes.data.items.map(video => {
+        return video.id.videoId;
+      })
+
+      // save token for next page of search results
+      const nextPageToken = searchRes.data.nextPageToken;
+
+      /*=====================================================
+      search request does not return number of views per video
+      so another request must be made for each video
+      provide array of IDs to return all videos from search in one request
+      ===================================================================*/
+      const videoRes = await axios('https://www.googleapis.com/youtube/v3/videos', {
+        params: {
+          access_token: accessToken,
+          part: "snippet,statistics",
+          id: videoIds.toString()
+        }
+      })
+
+      dispatch({
+        type: FETCH_CHANNEL_VIDEOS_SUCCESS,
+        payload: {
+          results: videoRes.data.items,
+          pageToken: nextPageToken
+        }
+      })
+
     } catch (error) {
       console.error(error);
       dispatch({ type: FETCH_CHANNEL_VIDEOS_FAILURE });

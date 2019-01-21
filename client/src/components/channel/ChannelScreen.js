@@ -4,7 +4,6 @@ import { fetchChannelVideos } from "../../actions";
 
 class ChannelScreen extends Component {
   componentDidMount() {
-    console.log(this.props);
     // search for videos based on the channelId in url params
     this.props.fetchChannelVideos(
       this.props.auth.accessToken,
