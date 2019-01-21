@@ -5,6 +5,7 @@ import {
   clearChannel,
   fetchChannel
 } from "../../actions";
+import ChannelHeader from "./ChannelHeader";
 import VideoGrid from "./VideoGrid";
 
 class ChannelScreen extends Component {
@@ -59,10 +60,20 @@ class ChannelScreen extends Component {
               videos={this.props.channel.video.results}
             />
   }
+  renderHeader() {
+    if (this.props.channel.loading) {
+      return <div></div>
+    }
+
+    return <ChannelHeader
+             thumbnail={this.props.channel.thumbnail}
+             title={this.props.channel.title}
+           />
+  }
   render() {
-    console.log(this.props.channel);
     return (
       <div>
+        {this.renderHeader()}
         {this.renderChannelVideos()}
       </div>
     )
