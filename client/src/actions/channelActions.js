@@ -31,7 +31,8 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
 
       console.log(searchRes);
     } catch (error) {
-
+      console.error(error);
+      dispatch({ type: FETCH_CHANNEL_VIDEOS_FAILURE });
     }
   }
 }
