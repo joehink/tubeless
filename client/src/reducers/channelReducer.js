@@ -1,7 +1,8 @@
 import {
   FETCHING_CHANNEL_VIDEOS,
   FETCH_CHANNEL_VIDEOS_SUCCESS,
-  FETCH_CHANNEL_VIDEOS_FAILURE
+  FETCH_CHANNEL_VIDEOS_FAILURE,
+  CLEAR_CHANNEL
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -39,6 +40,8 @@ export default (state = INITIAL_STATE, action) => {
           loading: false
         }
       };
+    case CLEAR_CHANNEL:
+      return INITIAL_STATE;
     default:
       return state;
   }

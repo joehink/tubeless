@@ -2,7 +2,8 @@ import axios from "axios";
 import {
   FETCHING_CHANNEL_VIDEOS,
   FETCH_CHANNEL_VIDEOS_SUCCESS,
-  FETCH_CHANNEL_VIDEOS_FAILURE
+  FETCH_CHANNEL_VIDEOS_FAILURE,
+  CLEAR_CHANNEL
 } from "../actions/types";
 
 export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
@@ -65,3 +66,7 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
     }
   }
 }
+
+export const clearChannel = () => {
+  return { type: CLEAR_CHANNEL };
+};
