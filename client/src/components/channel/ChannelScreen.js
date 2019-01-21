@@ -30,9 +30,9 @@ class ChannelScreen extends Component {
     }
   }
   render() {
-    console.log(this.props.channel);
     return (
       <div>
+        {this.renderChannelVideos()}
       </div>
     )
   }
