@@ -9,15 +9,13 @@ class SearchScreen extends Component {
     // search for videos based on the term in url params
     this.props.searchVideos(
       this.props.auth.accessToken,
-      this.props.match.params.searchTerm,
-      this.props.search.video.pageToken
+      this.props.match.params.searchTerm
     );
 
     // search for channels based on the term in url params
     this.props.searchChannels(
       this.props.auth.accessToken,
-      this.props.match.params.searchTerm,
-      this.props.search.channel.pageToken
+      this.props.match.params.searchTerm
     );
   }
   componentDidUpdate(prevProps) {
@@ -30,15 +28,13 @@ class SearchScreen extends Component {
     if (oldTerm !== newTerm) {
       // search for new videos
       this.props.searchVideos(
-        this.props.auth.accessToken, this.props.match.params.searchTerm,
-        this.props.search.video.pageToken
+        this.props.auth.accessToken, this.props.match.params.searchTerm
       );
 
       // search for new channels
       this.props.searchChannels(
         this.props.auth.accessToken,
-        this.props.match.params.searchTerm,
-        this.props.search.channel.pageToken
+        this.props.match.params.searchTerm
       );
     }
   }
