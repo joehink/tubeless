@@ -6,12 +6,13 @@ class List extends Component {
   renderListItems() {
     // takes prop collection, which is an array
     return this.props.collection.map(element => {
+      console.log(element.snippet.resourceId.channelId);
       // return a ListItem for each element in array
       return <ListItem
               key={element.id}
               title={element.snippet.title}
               thumbnail={element.snippet.thumbnails.default.url}
-              link="/"
+              link={`/channel/${element.snippet.resourceId.channelId}`}
             />
     })
   }

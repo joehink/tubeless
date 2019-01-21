@@ -7,6 +7,7 @@ import Landing from "./landing/Landing";
 import MainNav from "./nav/MainNav";
 import SideBar from "./sidebar/SideBar";
 import SearchScreen from "./search/SearchScreen";
+import ChannelScreen from "./channel/ChannelScreen";
 
 class App extends Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class App extends Component {
             <MainNav />
             <SideBar />
             <Route path="/search/:searchTerm" component={SearchScreen} />
+            <Route path="/channel/:id" component={ChannelScreen} />
         </div>
       </Router>
     )

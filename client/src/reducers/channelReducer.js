@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   }
 };
 
-export default (state = null, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCHING_CHANNEL_VIDEOS:
       return {

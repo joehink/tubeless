@@ -25,7 +25,6 @@ class ChannelResultListItem extends Component {
       channelTitle,
       channelId
     } = this.props.result.snippet;
-    
     return (
       <div>
         <img
