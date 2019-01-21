@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux"
 import { fetchChannelVideos, clearChannel } from "../../actions";
+import VideoGrid from "./VideoGrid";
 
 class ChannelScreen extends Component {
   componentDidMount() {
@@ -8,8 +9,7 @@ class ChannelScreen extends Component {
     // search for videos based on the channelId in url params
     this.props.fetchChannelVideos(
       this.props.auth.accessToken,
-      this.props.match.params.id,
-      this.props.channel.video.pageToken
+      this.props.match.params.id
     );
   }
   componentDidUpdate(prevProps) {
@@ -24,10 +24,24 @@ class ChannelScreen extends Component {
       // search for new videos
       this.props.fetchChannelVideos(
         this.props.auth.accessToken,
-        this.props.match.params.id,
-        this.props.channel.video.pageToken
+        this.props.match.params.id
       );
     }
+  }
+  renderChannelVideos() {
+    if (this.props.channel.video.loading) {
+      return [
+        <VideoGrid
+          key="1"
+          videos={this.props.channel.video.results}
+        />,
+        <div key="2">Spinner</div>
+      ]
+    } else
+
+    return <VideoGrid
+              videos={this.props.channel.video.results}
+            />
   }
   render() {
     return (
