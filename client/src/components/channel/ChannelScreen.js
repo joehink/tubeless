@@ -10,8 +10,10 @@ import VideoGrid from "./VideoGrid";
 
 class ChannelScreen extends Component {
   componentDidMount() {
+    // reset channel to initial state
     this.props.clearChannel();
 
+    // fetch channel info
     this.props.fetchChannel(
       this.props.auth.accessToken,
       this.props.match.params.id
@@ -33,6 +35,7 @@ class ChannelScreen extends Component {
     if (oldId !== newId) {
       this.props.clearChannel();
 
+      // fetch channel info
       this.props.fetchChannel(
         this.props.auth.accessToken,
         this.props.match.params.id
@@ -46,6 +49,7 @@ class ChannelScreen extends Component {
     }
   }
   renderChannelVideos() {
+    // if fetch for videos is still happening
     if (this.props.channel.video.loading) {
       return [
         <VideoGrid
@@ -56,15 +60,17 @@ class ChannelScreen extends Component {
       ]
     } else
 
+    // when fetch for channel videos ends
     return <VideoGrid
               videos={this.props.channel.video.results}
             />
   }
   renderHeader() {
+    // if fetch for channel info is still happening
     if (this.props.channel.loading) {
       return <div></div>
     }
-
+    // when fetch for channel info ends
     return <ChannelHeader
              thumbnail={this.props.channel.thumbnail}
              title={this.props.channel.title}
