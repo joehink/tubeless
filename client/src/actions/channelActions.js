@@ -12,8 +12,10 @@ import {
 export const fetchChannel = (accessToken, channelId) => {
   return async dispatch => {
     try {
+      // request for channel is about to begin
       dispatch({ type: FETCHING_CHANNEL });
-      
+
+      // request channel data
       const res = await axios.get('https://www.googleapis.com/youtube/v3/channels', {
         params: {
           access_token: accessToken,
@@ -22,16 +24,22 @@ export const fetchChannel = (accessToken, channelId) => {
         }
       });
 
+      // Destructure snippet from res
       const { snippet } = res.data.items[0];
+
+      // request returned channel data
+      // dispatch action with thumbnail and title
       dispatch({
         type: FETCH_CHANNEL_SUCCESS,
         payload: {
           thumbnail: snippet.thumbnails.default.url,
           title: snippet.title
         }
-      })
+      });
+
     } catch (error) {
       console.error(error);
+      // Something went wrong with the request
       dispatch({ type: FETCH_CHANNEL_FAILURE });
     }
   }
@@ -83,6 +91,7 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
         }
       })
 
+      // video res returns array of videos
       dispatch({
         type: FETCH_CHANNEL_VIDEOS_SUCCESS,
         payload: {
@@ -93,11 +102,13 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
 
     } catch (error) {
       console.error(error);
+      // something went wrong with the request
       dispatch({ type: FETCH_CHANNEL_VIDEOS_FAILURE });
     }
   }
 }
 
 export const clearChannel = () => {
+  // reset channel state to default
   return { type: CLEAR_CHANNEL };
 };
