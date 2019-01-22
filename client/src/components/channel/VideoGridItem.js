@@ -11,14 +11,14 @@ class VideoGridItem extends Component {
 
     return (
       <div>
-        // video thumbnail
+        {/* video thumbnail */}
         <img
           src={thumbnails.medium.url}
           alt={title}
         />
-        // video title
+        {/* video title */}
         <h3>{title}</h3>
-        // video views and date published
+        {/* video views and date published */}
         <p>
           {viewCount} views &#8226;
           {publishedAt}
