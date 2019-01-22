@@ -8,6 +8,7 @@ import {
   CLEAR_CHANNEL
 } from "../actions/types";
 
+// Define initial state for channel
 const INITIAL_STATE = {
   title: '',
   thumbnail: '',
@@ -22,6 +23,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCHING_CHANNEL_VIDEOS:
+      // Fetch for channels videos is about to start
       return {
         ...state,
         video: {
@@ -30,11 +32,13 @@ export default (state = INITIAL_STATE, action) => {
         }
       };
     case FETCHING_CHANNEL:
+      // Fetch for channel data is about to start
       return {
         ...state,
         loading: true
       }
     case FETCH_CHANNEL_VIDEOS_SUCCESS:
+      // Fetch for channel videos returned an array
       return {
         ...state,
         video: {
@@ -44,6 +48,7 @@ export default (state = INITIAL_STATE, action) => {
         }
       };
     case FETCH_CHANNEL_SUCCESS:
+      // Fetch for channel info returned data
       return {
         ...state,
         title: action.payload.title,
@@ -51,6 +56,7 @@ export default (state = INITIAL_STATE, action) => {
         loading: false
       }
     case FETCH_CHANNEL_VIDEOS_FAILURE:
+      // Something went wrong with the request
       return {
         ...state,
         video: {
@@ -59,11 +65,13 @@ export default (state = INITIAL_STATE, action) => {
         }
       };
     case FETCH_CHANNEL_FAILURE:
+      // Something went wrong with the request
       return {
         ...state,
         loading: false
       }
     case CLEAR_CHANNEL:
+      // Reset channel to INITIAL_STATE
       return INITIAL_STATE;
     default:
       return state;
