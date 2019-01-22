@@ -3,9 +3,9 @@ import React from "react";
 const ChannelHeader = (props) => {
   return (
     <div>
-      // channel thumbnail image
+      {/* channel thumbnail image */}
       <img src={props.thumbnail} alt={props.title} />
-      // name of channel
+      {/* name of channel */}
       <p>{props.title}</p>
     </div>
   );
