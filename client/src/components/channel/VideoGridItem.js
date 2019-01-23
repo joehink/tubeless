@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class VideoGridItem extends Component {
   render() {
@@ -12,12 +13,16 @@ class VideoGridItem extends Component {
     return (
       <div>
         {/* video thumbnail */}
-        <img
-          src={thumbnails.medium.url}
-          alt={title}
-        />
+        <Link to={`/video/${this.props.video.id}`}>
+          <img
+            src={thumbnails.medium.url}
+            alt={title}
+          />
+        </Link>
         {/* video title */}
-        <h3>{title}</h3>
+        <Link to={`/video/${this.props.video.id}`}>
+          <h3>{title}</h3>
+        </Link>
         {/* video views and date published */}
         <p>
           {viewCount} views &#8226;

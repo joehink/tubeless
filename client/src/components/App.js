@@ -8,6 +8,7 @@ import MainNav from "./nav/MainNav";
 import SideBar from "./sidebar/SideBar";
 import SearchScreen from "./search/SearchScreen";
 import ChannelScreen from "./channel/ChannelScreen";
+import VideoScreen from "./video/VideoScreen";
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class App extends Component {
             <SideBar />
             <Route path="/search/:searchTerm" component={SearchScreen} />
             <Route path="/channel/:id" component={ChannelScreen} />
+            <Route path="/video/:id" component={VideoScreen} />
         </div>
       </Router>
     )
