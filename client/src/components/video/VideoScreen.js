@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { fetchVideo } from "../../actions";
 
 import VideoPlayer from "./VideoPlayer";
+import VideoInfo from "./VideoInfo";
+import ChannelInfo from "./ChannelInfo";
+import VideoDescription from "./VideoDescription";
 
 class VideoScreen extends Component {
   componentDidMount() {
@@ -24,6 +27,25 @@ class VideoScreen extends Component {
       )
     }
   }
+  renderVideoComponents() {
+    return (
+      <div>
+        <VideoPlayer videoId={this.props.video.id} />
+        <VideoInfo
+          title={this.props.video.snippet.title}
+          views={this.props.video.statistics.viewCount}
+        />
+        <ChannelInfo
+          thumbnail={this.props.video.snippet.channelThumbnail}
+          channelTitle={this.props.video.snippet.channelTitle}
+          publishedAt={this.props.video.snippet.publishedAt}
+        />
+        <VideoDescription
+          description={this.props.video.snippet.description}
+        />
+      </div>
+    )
+  }
   renderVideo() {
     switch (this.props.video) {
       case null:
@@ -31,16 +53,11 @@ class VideoScreen extends Component {
       case false:
         return <div>No Video</div>;
       default:
-        return <VideoPlayer videoId={this.props.video.id} />
+        return this.renderVideoComponents();
     }
   }
   render() {
-    console.log(this.props.video);
-    return (
-      <div>
-        {this.renderVideo()}
-      </div>
-    )
+    return this.renderVideo();
   }
 }
 
