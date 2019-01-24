@@ -23,6 +23,7 @@ class VideoScreen extends Component {
     }
   }
   render() {
+    console.log(this.props.video);
     return (
       <div></div>
     )
