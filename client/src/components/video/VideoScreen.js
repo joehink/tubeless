@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchVideo } from "../../actions";
 
+import VideoPlayer from "./VideoPlayer";
+
 class VideoScreen extends Component {
   componentDidMount() {
     this.props.fetchVideo(
@@ -22,10 +24,22 @@ class VideoScreen extends Component {
       )
     }
   }
+  renderVideo() {
+    switch (this.props.video) {
+      case null:
+        return <div>Spinner</div>;
+      case false:
+        return <div>No Video</div>;
+      default:
+        return <VideoPlayer videoId={this.props.video.id} />
+    }
+  }
   render() {
     console.log(this.props.video);
     return (
-      <div></div>
+      <div>
+        {this.renderVideo()}
+      </div>
     )
   }
 }
