@@ -109,6 +109,27 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
   }
 }
 
+export const subscribeToChannel = (channelId, accessToken) => async dispatch => {
+  const subscriptionRes = await axios({
+    method: 'POST',
+    url: 'https://www.googleapis.com/youtube/v3/subscriptions',
+    data: {
+    snippet: {
+      resourceId: {
+        kind: 'youtube#channel',
+        channelId: channelId
+      }
+    }
+  },
+    params: {
+      part: 'snippet',
+      access_token: accessToken
+    }
+  });
+
+  console.log(subscriptionRes);
+}
+
 export const clearChannel = () => {
   // reset channel state to default
   return { type: CLEAR_CHANNEL };
