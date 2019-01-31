@@ -22,7 +22,7 @@ passport.use(new YoutubeV3Strategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
     callbackURL: keys.callbackURL,
-    scope: ['https://www.googleapis.com/auth/youtube.readonly'],
+    scope: ['https://www.googleapis.com/auth/youtube'],
     authorizationParams: {
       access_type : 'offline'
     }
