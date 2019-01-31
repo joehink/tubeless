@@ -1,4 +1,5 @@
 import React from "react";
+import SubscriptionButton from "./SubscriptionButton";
 
 const ChannelHeader = (props) => {
   return (
@@ -7,6 +8,8 @@ const ChannelHeader = (props) => {
       <img src={props.thumbnail} alt={props.title} />
       {/* name of channel */}
       <p>{props.title}</p>
+
+      <SubscriptionButton resultId={props.id} />
     </div>
   );
 };

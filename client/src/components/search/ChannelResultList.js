@@ -9,7 +9,6 @@ class ChannelResultList extends Component {
       return <ChannelResultListItem
                 key={result.id.channelId}
                 result={result}
-                subscriptions={this.props.subscriptions}
              />
     });
   }

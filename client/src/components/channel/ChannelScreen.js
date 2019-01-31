@@ -74,6 +74,7 @@ class ChannelScreen extends Component {
     return <ChannelHeader
              thumbnail={this.props.channel.thumbnail}
              title={this.props.channel.title}
+             id={this.props.channel.id}
            />
   }
   render() {

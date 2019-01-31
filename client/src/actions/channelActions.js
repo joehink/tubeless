@@ -32,6 +32,7 @@ export const fetchChannel = (accessToken, channelId) => {
       dispatch({
         type: FETCH_CHANNEL_SUCCESS,
         payload: {
+          id: res.data.items[0].id,
           thumbnail: snippet.thumbnails.default.url,
           title: snippet.title
         }

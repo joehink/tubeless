@@ -59,7 +59,6 @@ class SearchScreen extends Component {
         <ChannelResultList
           key="3"
           results={this.props.search.channel.results}
-          subscriptions={this.props.subscriptions}
         />,
         <div key="4">Spinner</div>
       ]
@@ -67,7 +66,6 @@ class SearchScreen extends Component {
 
     return <ChannelResultList
               results={this.props.search.channel.results}
-              subscriptions={this.props.subscriptions}
             />
   }
   render() {
@@ -81,7 +79,7 @@ class SearchScreen extends Component {
 }
 
 const mapStateToProps = ({ search, auth, subscriptions }) => {
-  return { search, auth, subscriptions }
+  return { search, auth }
 }
 
 export default connect(mapStateToProps, { searchVideos, searchChannels })(SearchScreen);

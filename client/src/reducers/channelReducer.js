@@ -10,6 +10,7 @@ import {
 
 // Define initial state for channel
 const INITIAL_STATE = {
+  id: '',
   title: '',
   thumbnail: '',
   loading: true,
@@ -51,6 +52,7 @@ export default (state = INITIAL_STATE, action) => {
       // Fetch for channel info returned data
       return {
         ...state,
+        id: action.payload.id,
         title: action.payload.title,
         thumbnail: action.payload.thumbnail,
         loading: false
