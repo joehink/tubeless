@@ -40,6 +40,8 @@ export const fetchSubscriptions = accessToken => async dispatch => {
 }
 
 export const subscribeToChannel = (channelId, title, thumbnail, accessToken) => async dispatch => {
+  // dispatch a simplified channel object into subscriptions list so there
+  // won't be a delay when button switches from subscribe to unsubscribe
   dispatch({
     type: ADD_TEMP_SUBSCRIPTION,
     payload: {
@@ -56,6 +58,8 @@ export const subscribeToChannel = (channelId, title, thumbnail, accessToken) => 
       }
     }
   })
+
+  // Send request to add channel to user's subscriptions
   const subscriptionRes = await axios({
     method: 'POST',
     url: 'https://www.googleapis.com/youtube/v3/subscriptions',
@@ -75,7 +79,11 @@ export const subscribeToChannel = (channelId, title, thumbnail, accessToken) => 
 }
 
 export const unsubscribeFromChannel = (channelId, accessToken) => async dispatch => {
+  // dispatch action to remove channel from subscriptions list so there
+  // won't be a delay when button switches from subscribe to unsubscribe
   dispatch({ type: REMOVE_SUBSCRIPTION, payload: channelId });
+
+  // Make request to get subscription object from channelId
   const subRes = await axios({
     method: 'GET',
     url: 'https://www.googleapis.com/youtube/v3/subscriptions',
@@ -87,8 +95,10 @@ export const unsubscribeFromChannel = (channelId, accessToken) => async dispatch
     }
   });
 
+  // save subscription object
   const channelToUnsubscribeFrom = subRes.data.items[0]
 
+  // Make request to delete channel from user's subscriptions
   const unsubRes = await axios({
     method: 'DELETE',
     url: 'https://www.googleapis.com/youtube/v3/subscriptions',
@@ -97,5 +107,4 @@ export const unsubscribeFromChannel = (channelId, accessToken) => async dispatch
       access_token: accessToken
     }
   })
-  console.log(unsubRes);
 }
