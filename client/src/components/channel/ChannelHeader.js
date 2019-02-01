@@ -9,7 +9,11 @@ const ChannelHeader = (props) => {
       {/* name of channel */}
       <p>{props.title}</p>
 
-      <SubscriptionButton resultId={props.id} />
+      <SubscriptionButton
+        resultId={props.id}
+        thumbnail={props.thumbnail}
+        title={props.title}
+      />
     </div>
   );
 };

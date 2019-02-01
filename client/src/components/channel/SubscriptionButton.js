@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { subscribeToChannel } from "../../actions";
+import { subscribeToChannel, unsubscribeFromChannel } from "../../actions";
 
 
 class SubscriptionButton extends Component {
@@ -15,12 +15,21 @@ class SubscriptionButton extends Component {
       // if the user has the channel in their subscriptions
       if (isSubscribed) {
         // return a button that allows the user to unsubscribe
-        return <button>Unsubscribe</button>
+        return <button
+          onClick={() => this.props.unsubscribeFromChannel(
+            this.props.resultId,
+            this.props.auth.accessToken
+          )}
+        >
+          Unsubscribe
+        </button>
       } else {
         // return a button that allows the user to subscribe
         return <button
             onClick={() => this.props.subscribeToChannel(
               this.props.resultId,
+              this.props.title,
+              this.props.thumbnail,
               this.props.auth.accessToken
             )}
           >
@@ -40,4 +49,4 @@ const mapStateToProps = ({ subscriptions, auth }) => {
   return { subscriptions, auth };
 }
 
-export default connect(mapStateToProps, { subscribeToChannel })(SubscriptionButton);
+export default connect(mapStateToProps, { subscribeToChannel, unsubscribeFromChannel })(SubscriptionButton);

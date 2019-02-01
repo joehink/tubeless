@@ -20,7 +20,11 @@ class ChannelResultListItem extends Component {
       <Link to={`/channel/${channelId}`}>
         <h4>{channelTitle}</h4>
       </Link>
-        <SubscriptionButton resultId={channelId} />
+        <SubscriptionButton
+          resultId={channelId}
+          thumbnail={thumbnails.default.url}
+          title={channelTitle}
+        />
       </div>
     )
   }

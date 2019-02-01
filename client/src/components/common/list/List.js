@@ -8,7 +8,7 @@ class List extends Component {
     return this.props.collection.map(element => {
       // return a ListItem for each element in array
       return <ListItem
-              key={element.id}
+              key={element.snippet.resourceId.channelId}
               title={element.snippet.title}
               thumbnail={element.snippet.thumbnails.default.url}
               link={`/channel/${element.snippet.resourceId.channelId}`}
