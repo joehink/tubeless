@@ -49,22 +49,28 @@ export default (state = INITIAL_STATE, action) => {
         list: state.list.filter(sub => sub.snippet.resourceId.channelId !== action.payload)
       }
     case ADD_SUBSCRIPTION_SUCCESS:
+      // Add subscription request was successful
       return {
         ...state,
         subOrUnsub: false,
       }
     case ADD_SUBSCRIPTION_FAILURE:
+      // Something went wrong when adding subscription
+      // Remove tem subscription that was added
       return {
         ...state,
         subOrUnsub: false,
         list: state.list.filter(sub => sub.snippet.resourceId.channelId !== action.payload)
       }
     case REMOVE_SUBSCRIPTION_SUCCESS:
+      // Remove subscription request was successful
       return {
         ...state,
         subOrUnsub: false
       }
     case REMOVE_SUBSCRIPTION_FAILURE:
+      // Something went wrong when removing subscription
+      // Add removed subscription back in
       return {
         ...state,
         subOrUnsub: false,

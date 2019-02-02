@@ -26,11 +26,8 @@ export const fetchSubscriptions = accessToken => async dispatch => {
       }
     );
 
-    console.log(res.data.items);
-
     // dispatch action that returns subscriptions
     dispatch({ type: FETCH_SUBSCRIPTIONS_SUCCESS, payload: res.data.items });
-
 
   } catch(error) {
     // something went wrong with the request
@@ -41,6 +38,7 @@ export const fetchSubscriptions = accessToken => async dispatch => {
 
 export const subscribeToChannel = (channelId, title, thumbnail, accessToken) => async dispatch => {
   try {
+    // Add subscription request is about to begin
     dispatch({ type: START_SUB_ACTION });
     // dispatch a simplified channel object into subscriptions list so there
     // won't be a delay when button switches from subscribe to unsubscribe
@@ -62,7 +60,7 @@ export const subscribeToChannel = (channelId, title, thumbnail, accessToken) => 
     })
 
     // Send request to add channel to user's subscriptions
-    const subscriptionRes = await axios({
+    await axios({
       method: 'POST',
       url: 'https://www.googleapis.com/youtube/v3/subscriptions',
       data: {
@@ -79,15 +77,19 @@ export const subscribeToChannel = (channelId, title, thumbnail, accessToken) => 
       }
     });
 
+    // Subscription was successfully added
     dispatch({ type: ADD_SUBSCRIPTION_SUCCESS });
   } catch (err) {
+    // Something went wrong with request
     console.error(err);
+    // Remove temporary subscription that was added
     dispatch({ type: ADD_SUBSCRIPTION_FAILURE, payload: channelId });
   }
 }
 
 export const unsubscribeFromChannel = (channelId, title, thumbnail, accessToken) => async dispatch => {
   try {
+    // Remove subscription request is about to begin
     dispatch({ type: START_SUB_ACTION });
     // dispatch action to remove channel from subscriptions list so there
     // won't be a delay when button switches from subscribe to unsubscribe
@@ -109,7 +111,7 @@ export const unsubscribeFromChannel = (channelId, title, thumbnail, accessToken)
     const channelToUnsubscribeFrom = subRes.data.items[0]
 
     // Make request to delete channel from user's subscriptions
-    const unsubRes = await axios({
+    await axios({
       method: 'DELETE',
       url: 'https://www.googleapis.com/youtube/v3/subscriptions',
       params: {
@@ -117,9 +119,12 @@ export const unsubscribeFromChannel = (channelId, title, thumbnail, accessToken)
         access_token: accessToken
       }
     })
+    // Subscription was successfully removed
     dispatch({ type: REMOVE_SUBSCRIPTION_SUCCESS });
   } catch (err) {
+    // Something went wrong with request
     console.error(err);
+    // add removed subscription back in
     dispatch({
       type: REMOVE_SUBSCRIPTION_FAILURE,
       payload: {

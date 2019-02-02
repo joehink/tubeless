@@ -13,6 +13,8 @@ class SideBar extends Component {
   renderSubscriptions() {
       if (!this.props.subscriptions.loading) {
         return <List collection={this.props.subscriptions.list} />
+      } else {
+        return <div>Spinner</div>
       }
 
   }

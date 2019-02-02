@@ -15,6 +15,7 @@ class SubscriptionButton extends Component {
       // if the user has the channel in their subscriptions
       if (isSubscribed) {
         // return a button that allows the user to unsubscribe
+        // If subscription action is ongoing, disable button
         return <button
           disabled={this.props.subscriptions.subOrUnsub}
           onClick={() => this.props.unsubscribeFromChannel(
@@ -28,6 +29,7 @@ class SubscriptionButton extends Component {
         </button>
       } else {
         // return a button that allows the user to subscribe
+        // If subscription action is ongoing, disable button
         return <button
             disabled={this.props.subscriptions.subOrUnsub}
             onClick={() => this.props.subscribeToChannel(
