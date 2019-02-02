@@ -39,6 +39,7 @@ class VideoScreen extends Component {
           thumbnail={this.props.video.snippet.channelThumbnail}
           channelTitle={this.props.video.snippet.channelTitle}
           publishedAt={this.props.video.snippet.publishedAt}
+          channelId={this.props.video.snippet.channelId}
         />
         <VideoDescription
           description={this.props.video.snippet.description}
