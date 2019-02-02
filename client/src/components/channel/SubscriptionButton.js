@@ -6,9 +6,9 @@ import { subscribeToChannel, unsubscribeFromChannel } from "../../actions";
 class SubscriptionButton extends Component {
   subscribeOrUnsubscribe() {
     // If subscriptions fetch has finished
-    if (this.props.subscriptions) {
+    if (!this.props.subscriptions.loading) {
       // See if the ID of any channel the user is subscribed to matches the channel search result ID
-      const isSubscribed = this.props.subscriptions.some(sub => {
+      const isSubscribed = this.props.subscriptions.list.some(sub => {
         return sub.snippet.resourceId.channelId === this.props.resultId;
       })
 

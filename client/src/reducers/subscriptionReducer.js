@@ -5,20 +5,39 @@ import {
   REMOVE_SUBSCRIPTION
 } from "../actions/types";
 
-export default (state = null, action) => {
+const INITIAL_STATE = {
+  subOrUnsub: false,
+  list: [],
+  loading: false,
+  pageToken: ''
+}
+
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_SUBSCRIPTIONS_SUCCESS:
       // request for subscriptions was successful
-      return action.payload;
+      return {
+        loading: false,
+        list: [...state.list, ...action.payload]
+      }
     case FETCH_SUBSCRIPTIONS_FAILURE:
       // something went wrong with the request
-      return false;
+      return {
+        ...state,
+        loading: false
+      };
     case ADD_TEMP_SUBSCRIPTION:
       // Add simple channel object to subscriptions list
-      return [action.payload, ...state];
+      return {
+          ...state,
+          list: [action.payload, ...state.list]
+      }
     case REMOVE_SUBSCRIPTION:
       // filter out channel user is unsubscribing from
-      return state.filter(sub => sub.snippet.resourceId.channelId !== action.payload );
+      return {
+        ...state,
+        list: state.list.filter(sub => sub.snippet.resourceId.channelId !== action.payload)
+      }
     default:
       return state;
   }

@@ -23,14 +23,9 @@ export const fetchSubscriptions = accessToken => async dispatch => {
 
     console.log(res.data.items);
 
-    // if user has subscriptions
-    if (res.data.items.length > 0) {
-      // dispatch action that returns subscriptions
-      dispatch({ type: FETCH_SUBSCRIPTIONS_SUCCESS, payload: res.data.items });
-    } else {
-      // user has zero subscriptions
-      dispatch({ type: FETCH_SUBSCRIPTIONS_SUCCESS, payload: false });
-    }
+    // dispatch action that returns subscriptions
+    dispatch({ type: FETCH_SUBSCRIPTIONS_SUCCESS, payload: res.data.items });
+
 
   } catch(error) {
     // something went wrong with the request
