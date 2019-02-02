@@ -3,7 +3,12 @@ import {
   FETCH_SUBSCRIPTIONS_SUCCESS,
   FETCH_SUBSCRIPTIONS_FAILURE,
   ADD_TEMP_SUBSCRIPTION,
-  REMOVE_SUBSCRIPTION
+  TEMP_REMOVE_SUBSCRIPTION,
+  START_SUB_ACTION,
+  ADD_SUBSCRIPTION_SUCCESS,
+  ADD_SUBSCRIPTION_FAILURE,
+  REMOVE_SUBSCRIPTION_SUCCESS,
+  REMOVE_SUBSCRIPTION_FAILURE
 } from "./types";
 
 export const fetchSubscriptions = accessToken => async dispatch => {
@@ -35,71 +40,101 @@ export const fetchSubscriptions = accessToken => async dispatch => {
 }
 
 export const subscribeToChannel = (channelId, title, thumbnail, accessToken) => async dispatch => {
-  // dispatch a simplified channel object into subscriptions list so there
-  // won't be a delay when button switches from subscribe to unsubscribe
-  dispatch({
-    type: ADD_TEMP_SUBSCRIPTION,
-    payload: {
-      snippet: {
-        resourceId: {
-          channelId: channelId
-        },
-        thumbnails: {
-          default: {
-            url: thumbnail
-          }
-        },
-        title: title
-      }
-    }
-  })
-
-  // Send request to add channel to user's subscriptions
-  const subscriptionRes = await axios({
-    method: 'POST',
-    url: 'https://www.googleapis.com/youtube/v3/subscriptions',
-    data: {
-      snippet: {
-        resourceId: {
-          kind: 'youtube#channel',
-          channelId: channelId
+  try {
+    dispatch({ type: START_SUB_ACTION });
+    // dispatch a simplified channel object into subscriptions list so there
+    // won't be a delay when button switches from subscribe to unsubscribe
+    dispatch({
+      type: ADD_TEMP_SUBSCRIPTION,
+      payload: {
+        snippet: {
+          resourceId: {
+            channelId: channelId
+          },
+          thumbnails: {
+            default: {
+              url: thumbnail
+            }
+          },
+          title: title
         }
       }
-    },
-    params: {
-      part: 'snippet',
-      access_token: accessToken
-    }
-  });
+    })
+
+    // Send request to add channel to user's subscriptions
+    const subscriptionRes = await axios({
+      method: 'POST',
+      url: 'https://www.googleapis.com/youtube/v3/subscriptions',
+      data: {
+        snippet: {
+          resourceId: {
+            kind: 'youtube#channel',
+            channelId: channelId
+          }
+        }
+      },
+      params: {
+        part: 'snippet',
+        access_token: accessToken
+      }
+    });
+
+    dispatch({ type: ADD_SUBSCRIPTION_SUCCESS });
+  } catch (err) {
+    console.error(err);
+    dispatch({ type: ADD_SUBSCRIPTION_FAILURE, payload: channelId });
+  }
 }
 
-export const unsubscribeFromChannel = (channelId, accessToken) => async dispatch => {
-  // dispatch action to remove channel from subscriptions list so there
-  // won't be a delay when button switches from subscribe to unsubscribe
-  dispatch({ type: REMOVE_SUBSCRIPTION, payload: channelId });
+export const unsubscribeFromChannel = (channelId, title, thumbnail, accessToken) => async dispatch => {
+  try {
+    dispatch({ type: START_SUB_ACTION });
+    // dispatch action to remove channel from subscriptions list so there
+    // won't be a delay when button switches from subscribe to unsubscribe
+    dispatch({ type: TEMP_REMOVE_SUBSCRIPTION, payload: channelId });
 
-  // Make request to get subscription object from channelId
-  const subRes = await axios({
-    method: 'GET',
-    url: 'https://www.googleapis.com/youtube/v3/subscriptions',
-    params: {
-      part: 'snippet,contentDetails',
-      forChannelId: channelId,
-      mine: true,
-      access_token: accessToken
-    }
-  });
+    // Make request to get subscription object from channelId
+    const subRes = await axios({
+      method: 'GET',
+      url: 'https://www.googleapis.com/youtube/v3/subscriptions',
+      params: {
+        part: 'snippet,contentDetails',
+        forChannelId: channelId,
+        mine: true,
+        access_token: accessToken
+      }
+    });
 
-  // save subscription object
-  const channelToUnsubscribeFrom = subRes.data.items[0]
+    // save subscription object
+    const channelToUnsubscribeFrom = subRes.data.items[0]
 
-  // Make request to delete channel from user's subscriptions
-  const unsubRes = await axios({
-    method: 'DELETE',
-    url: 'https://www.googleapis.com/youtube/v3/subscriptions',
-    params: {
-      id: channelToUnsubscribeFrom.id,
-      access_token: accessToken
-    }
-  })
+    // Make request to delete channel from user's subscriptions
+    const unsubRes = await axios({
+      method: 'DELETE',
+      url: 'https://www.googleapis.com/youtube/v3/subscriptions',
+      params: {
+        id: channelToUnsubscribeFrom.id,
+        access_token: accessToken
+      }
+    })
+    dispatch({ type: REMOVE_SUBSCRIPTION_SUCCESS });
+  } catch (err) {
+    console.error(err);
+    dispatch({
+      type: REMOVE_SUBSCRIPTION_FAILURE,
+      payload: {
+        snippet: {
+          resourceId: {
+            channelId: channelId
+          },
+          thumbnails: {
+            default: {
+              url: thumbnail
+            }
+          },
+          title: title
+        }
+      }
+    })
+  }
 }
