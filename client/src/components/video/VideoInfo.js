@@ -1,17 +1,15 @@
 import React, { Component } from "react";
+import withHelpers from "../withHelpers";
 
 class VideoInfo extends Component {
-  stringifyViews(views) {
-    return <p>{views} views</p>;
-  }
   render() {
     return (
       <div>
         <h3>{ this.props.title }</h3>
-        {this.stringifyViews(this.props.views)}
+        <p>{this.props.formatViews(this.props.views)} views</p>
       </div>
     );
   }
 }
 
-export default VideoInfo;
+export default withHelpers(VideoInfo);

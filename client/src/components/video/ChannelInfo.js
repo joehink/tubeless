@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SubscriptionButton from "../channel/SubscriptionButton";
+import withHelpers from "../withHelpers";
 
 class ChannelInfo extends Component {
   render() {
@@ -11,7 +12,7 @@ class ChannelInfo extends Component {
         />
         <div>
           <h5>{this.props.channelTitle}</h5>
-          <p>{this.props.publishedAt}</p>
+          <p>{this.props.formatPublishedDate(this.props.publishedAt)}</p>
         </div>
         <SubscriptionButton
           resultId={this.props.channelId}
@@ -23,4 +24,4 @@ class ChannelInfo extends Component {
   }
 }
 
-export default ChannelInfo;
+export default withHelpers(ChannelInfo);

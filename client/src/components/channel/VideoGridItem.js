@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import withHelpers from "../withHelpers";
 
 class VideoGridItem extends Component {
   render() {
@@ -25,12 +26,12 @@ class VideoGridItem extends Component {
         </Link>
         {/* video views and date published */}
         <p>
-          {viewCount} views &#8226;
-          {publishedAt}
+          {this.props.formatViews(viewCount)} views
+          &#8226; {this.props.formatPublishedDate(publishedAt)}
         </p>
       </div>
     )
   }
 }
 
-export default VideoGridItem;
+export default withHelpers(VideoGridItem);

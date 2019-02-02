@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import withHelpers from "../withHelpers";
 
 class VideoResultListItem extends Component {
   render() {
@@ -13,8 +14,8 @@ class VideoResultListItem extends Component {
           <h3>{snippet.title}</h3>
           <p>
             {snippet.channelTitle} &#8226;
-            {statistics.viewCount} views &#8226;
-            {snippet.publishedAt}
+            {this.props.formatViews(statistics.viewCount)} views &#8226;
+            {this.props.formatPublishedDate(snippet.publishedAt)}
           </p>
           <p>{snippet.description}</p>
         </div>
@@ -23,4 +24,4 @@ class VideoResultListItem extends Component {
   }
 }
 
-export default VideoResultListItem;
+export default withHelpers(VideoResultListItem);
