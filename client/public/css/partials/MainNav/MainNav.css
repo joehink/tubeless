@@ -1,0 +1,31 @@
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid #DDD;
+}
+.main-nav .sidebar-toggle {
+  font-size: 24px;
+}
+.main-nav .brand-img {
+  margin: 0 auto 0 10px;
+}
+.main-nav .search-bar {
+  order: 3;
+  width: 100%;
+}
+.main-nav .profile-img {
+  display: none;
+}
+.main-nav .sign-out {
+  text-decoration: none;
+  color: #888;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=MainNav.css.map */

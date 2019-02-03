@@ -1,0 +1,29 @@
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 0 15px rgba($color: #000000, $alpha: .5);
+  border-bottom: 1px solid #DDD;
+  .sidebar-toggle {
+    font-size: 24px;
+  }
+  .brand-img {
+    margin: 0 auto 0 10px;
+  }
+  .search-bar {
+    order: 3;
+    width: 100%;
+  }
+  .profile-img {
+    display: none;
+  }
+  .sign-out {
+    text-decoration: none;
+    color: #888;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+  }
+}

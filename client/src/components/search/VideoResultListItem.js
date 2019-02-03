@@ -13,9 +13,8 @@ class VideoResultListItem extends Component {
         <div>
           <h3>{snippet.title}</h3>
           <p>
-            {snippet.channelTitle} &#8226;
-            {this.props.formatViews(statistics.viewCount)} views &#8226;
-            {this.props.formatPublishedDate(snippet.publishedAt)}
+            {snippet.channelTitle} &#8226; {this.props.formatViews(statistics.viewCount)} views
+            &#8226; {this.props.formatPublishedDate(snippet.publishedAt)}
           </p>
           <p>{snippet.description}</p>
         </div>

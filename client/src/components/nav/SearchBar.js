@@ -22,7 +22,7 @@ class SearchBar extends Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleSearch.bind(this)}>
+      <form className="search-bar" onSubmit={this.handleSearch.bind(this)}>
         <input
           type="text"
           // value based on state
@@ -30,7 +30,7 @@ class SearchBar extends Component {
           // change state when something typed in
           onChange={event => this.setState({ searchTerm: event.target.value })}
         />
-        <input type="submit" value="Search"/>
+        <button type="submit"><i className="fas fa-search"></i></button>
       </form>
     )
   }

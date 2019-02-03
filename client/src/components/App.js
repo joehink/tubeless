@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-            <MainNav />
+            <MainNav profileIMG={this.props.auth.profileIMG} />
             <SideBar />
             <Route path="/search/:searchTerm" component={SearchScreen} />
             <Route path="/channel/:id" component={ChannelScreen} />

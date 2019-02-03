@@ -5,9 +5,22 @@ import SearchBar from "./SearchBar";
 class MainNav extends Component {
   render() {
     return (
-      <nav>
+      <nav className="main-nav">
+        <i className="fas fa-bars sidebar-toggle"></i>
+        <img
+          className="brand-img"
+          width="100"
+          src="/images/logo.png" alt="YouTube logo"
+        />
         <SearchBar />
-        <a href="/api/logout">Sign Out</a>
+        <a className="sign-out" href="/api/logout">
+          Sign Out
+        </a>
+        <img
+          className="profile-img"
+          src={this.props.profileIMG}
+          alt="profile"
+        />
       </nav>
     )
   }
