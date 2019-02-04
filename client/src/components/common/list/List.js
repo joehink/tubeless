@@ -17,7 +17,7 @@ class List extends Component {
   }
   render() {
     return (
-      <ul>
+      <ul className="list">
         { this.renderListItems() }
       </ul>
     );

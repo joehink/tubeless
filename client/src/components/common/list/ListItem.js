@@ -6,6 +6,7 @@ class ListItem extends Component {
     // If a thumbnail is provided
     if (this.props.thumbnail) {
       return  <img
+                className="img-sm"
                 src={this.props.thumbnail}
                 alt={this.props.title}
               />
@@ -14,7 +15,7 @@ class ListItem extends Component {
   render() {
     return (
       <li>
-        <Link to={this.props.link}>
+        <Link to={this.props.link} className="list-item">
           { this.renderThumbnail() }
           <span>{ this.props.title }</span>
         </Link>
@@ -23,4 +24,4 @@ class ListItem extends Component {
   }
 }
 
-export default ListItem
+export default ListItem;

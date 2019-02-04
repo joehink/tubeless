@@ -3,14 +3,27 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.img-sm {
+  border-radius: 100%;
+  width: 50px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
 .main-nav {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  padding: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid #DDD;
+  z-index: 1;
 }
 .main-nav .sidebar-toggle {
   font-size: 24px;
@@ -36,12 +49,52 @@ body {
 .search-bar {
   padding-top: 20px;
   text-align: center;
+  display: flex;
 }
 .search-bar input[type=text] {
   border: 1px solid #DDD;
   padding: 5px 7.5px;
   border-radius: 5px;
   border-radius: 3px;
+  flex: 1;
+}
+
+.side-bar {
+  position: absolute;
+  height: 100%;
+  width: 90%;
+  background-color: #F5F5F5;
+  overflow-y: scroll;
+  padding: 10px 0;
+}
+.side-bar .sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 5px;
+}
+.side-bar .sidebar-close {
+  font-size: 28px;
+}
+.side-bar h4 {
+  margin: 0;
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.list-item span {
+  margin-left: 10px;
+  color: black;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -381,6 +434,27 @@ template {
  */
 [hidden] {
   display: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+}
+
+.sidebarAndNav {
+  flex: 1;
+  position: relative;
 }
 
 /*# sourceMappingURL=style.css.map */

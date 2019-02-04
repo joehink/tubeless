@@ -1,0 +1,12 @@
+.list-item {
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.list-item span {
+  margin-left: 10px;
+  color: black;
+}
+
+/*# sourceMappingURL=ListItem.css.map */

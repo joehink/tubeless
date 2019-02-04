@@ -18,12 +18,14 @@ class App extends Component {
   renderApp() {
     return (
       <Router>
-        <div>
+        <div className="App">
             <MainNav profileIMG={this.props.auth.profileIMG} />
-            <SideBar />
-            <Route path="/search/:searchTerm" component={SearchScreen} />
-            <Route path="/channel/:id" component={ChannelScreen} />
-            <Route path="/video/:id" component={VideoScreen} />
+            <div className="sidebarAndNav">
+              <SideBar />
+              <Route path="/search/:searchTerm" component={SearchScreen} />
+              <Route path="/channel/:id" component={ChannelScreen} />
+              <Route path="/video/:id" component={VideoScreen} />
+            </div>
         </div>
       </Router>
     )

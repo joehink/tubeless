@@ -1,0 +1,22 @@
+.side-bar {
+  position: absolute;
+  height: 100%;
+  width: 90%;
+  background-color: #F5F5F5;
+  overflow-y: scroll;
+  padding: 10px 0;
+}
+.side-bar .sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 5px;
+}
+.side-bar .sidebar-close {
+  font-size: 28px;
+}
+.side-bar h4 {
+  margin: 0;
+}
+
+/*# sourceMappingURL=SideBar.css.map */

@@ -1,4 +1,30 @@
 @import "partials/fonts",
+        "partials/App",
+        "partials/classes",
         "partials/MainNav/MainNav",
         "partials/MainNav/SearchBar",
+        "partials/SideBar/SideBar",
+        "partials/SideBar/List",
+        "partials/SideBar/ListItem",
         "partials/normalize";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+}
+
+.sidebarAndNav {
+  flex: 1;
+  position: relative;
+}

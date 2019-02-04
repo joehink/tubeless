@@ -20,7 +20,11 @@ class SideBar extends Component {
   }
   render() {
     return (
-      <aside>
+      <aside className="side-bar">
+        <div className="sidebar-heading">
+          <h4>SUBSCRIPTIONS</h4>
+          <i className="fas fa-times sidebar-close"></i>
+        </div>
         { this.renderSubscriptions() }
       </aside>
     );

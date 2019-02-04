@@ -1,0 +1,10 @@
+.list-item {
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  span {
+    margin-left: 10px;
+    color: black;
+  }
+}
