@@ -75,6 +75,10 @@ body {
   padding: 10px 20px;
 }
 
+.close {
+  display: none;
+}
+
 .list {
   list-style-type: none;
   margin: 0;

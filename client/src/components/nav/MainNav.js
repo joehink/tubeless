@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { toggleSideBar } from "../../actions";
 
 import SearchBar from "./SearchBar";
 
@@ -6,7 +8,10 @@ class MainNav extends Component {
   render() {
     return (
       <nav className="main-nav">
-        <i className="fas fa-bars sidebar-toggle"></i>
+        <i
+          className="fas fa-bars sidebar-toggle"
+          onClick={() => this.props.toggleSideBar()}
+        ></i>
         <img
           className="brand-img"
           width="100"
@@ -27,4 +32,4 @@ class MainNav extends Component {
 }
 
 
-export default MainNav;
+export default connect(null, { toggleSideBar })(MainNav);

@@ -20,7 +20,7 @@ class SideBar extends Component {
   }
   render() {
     return (
-      <aside className="side-bar">
+      <aside className={`side-bar ${this.props.sidebar ? "open" : "close"}`}>
         <h4>SUBSCRIPTIONS</h4>
         { this.renderSubscriptions() }
       </aside>
@@ -28,8 +28,8 @@ class SideBar extends Component {
   }
 }
 
-const mapStateToProps = ({ auth, subscriptions }) => {
-  return { auth, subscriptions };
+const mapStateToProps = ({ auth, subscriptions, sidebar }) => {
+  return { auth, subscriptions, sidebar };
 };
 
 export default connect(
