@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom"
+import { closeSideBar } from "../../../actions";
 
 class ListItem extends Component {
+  shouldCloseSideBar() {
+    if (window.innerWidth < 768) {
+      this.props.closeSideBar();
+    }
+  }
   renderThumbnail() {
     // If a thumbnail is provided
     if (this.props.thumbnail) {
@@ -15,7 +22,11 @@ class ListItem extends Component {
   render() {
     return (
       <li>
-        <Link to={this.props.link} className="list-item">
+        <Link
+          to={this.props.link}
+          className="list-item"
+          onClick={this.shouldCloseSideBar.bind(this)}
+        >
           { this.renderThumbnail() }
           <span>{ this.props.title }</span>
         </Link>
@@ -24,4 +35,4 @@ class ListItem extends Component {
   }
 }
 
-export default ListItem;
+export default connect(null, { closeSideBar })(ListItem);
