@@ -16,7 +16,6 @@ class SideBar extends Component {
       } else {
         return <div>Spinner</div>
       }
-
   }
   render() {
     return (

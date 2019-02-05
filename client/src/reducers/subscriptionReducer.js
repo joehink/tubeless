@@ -1,4 +1,5 @@
 import {
+  FETCHING_SUBSCRIPTIONS,
   FETCH_SUBSCRIPTIONS_SUCCESS,
   FETCH_SUBSCRIPTIONS_FAILURE,
   ADD_TEMP_SUBSCRIPTION,
@@ -19,9 +20,16 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case FETCHING_SUBSCRIPTIONS:
+      // request for subscriptions is about to begin
+      return {
+        ...state,
+        loading: true
+      }
     case FETCH_SUBSCRIPTIONS_SUCCESS:
       // request for subscriptions was successful
       return {
+        ...state,
         loading: false,
         list: [...state.list, ...action.payload]
       }

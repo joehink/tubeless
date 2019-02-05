@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  FETCHING_SUBSCRIPTIONS,
   FETCH_SUBSCRIPTIONS_SUCCESS,
   FETCH_SUBSCRIPTIONS_FAILURE,
   ADD_TEMP_SUBSCRIPTION,
@@ -13,6 +14,7 @@ import {
 
 export const fetchSubscriptions = accessToken => async dispatch => {
   try {
+    dispatch({ type: FETCHING_SUBSCRIPTIONS })
     // Make a request to the YouTube API for the user's subscriptions
     const res = await axios.get(
       "https://www.googleapis.com/youtube/v3/subscriptions",
