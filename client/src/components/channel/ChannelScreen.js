@@ -79,7 +79,7 @@ class ChannelScreen extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="channel-screen">
         {this.renderHeader()}
         {this.renderChannelVideos()}
       </div>

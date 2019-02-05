@@ -1,4 +1,5 @@
 @import "partials/fonts",
+        "partials/normalize",
         "partials/App",
         "partials/classes",
         "partials/MainNav/MainNav",
@@ -6,7 +7,8 @@
         "partials/SideBar/SideBar",
         "partials/SideBar/List",
         "partials/SideBar/ListItem",
-        "partials/normalize";
+        "partials/Channel/ChannelScreen";
+
 
 html {
   height: 100%;
@@ -25,6 +27,7 @@ body * {
 }
 
 .sidebarAndNav {
+  display: flex;
   flex: 1;
   position: relative;
 }

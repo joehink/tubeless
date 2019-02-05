@@ -45,3 +45,4 @@ export const RESET_VIDEO = "RESET_VIDEO";
 
 // ============ Sidebar Types ============
 export const TOGGLE_SIDE_BAR = "TOGGLE_SIDE_BAR";
+export const CLOSE_SIDE_BAR = "close_side_bar";

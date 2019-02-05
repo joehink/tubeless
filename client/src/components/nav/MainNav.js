@@ -1,10 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { toggleSideBar } from "../../actions";
+import { toggleSideBar, closeSideBar } from "../../actions";
 
 import SearchBar from "./SearchBar";
 
 class MainNav extends Component {
+  componentDidMount() {
+    if (window.innerWidth < 768) {
+        this.props.closeSideBar()
+    }
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 768 ) {
+        this.props.closeSideBar();
+      }
+    })
+  }
   render() {
     return (
       <nav className="main-nav">
@@ -32,4 +42,4 @@ class MainNav extends Component {
 }
 
 
-export default connect(null, { toggleSideBar })(MainNav);
+export default connect(null, { toggleSideBar, closeSideBar })(MainNav);
