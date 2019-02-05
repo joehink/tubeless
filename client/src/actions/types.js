@@ -41,3 +41,7 @@ export const CLEAR_CHANNEL = "CLEAR_CHANNEL";
 export const FETCH_VIDEO_SUCCESS = "FETCH_VIDEO_SUCCESS";
 export const FETCH_VIDEO_FAILURE = "FETCH_VIDEO_FAILURE";
 export const RESET_VIDEO = "RESET_VIDEO";
+
+
+// ============ Sidebar Types ============
+export const TOGGLE_SIDE_BAR = "TOGGLE_SIDE_BAR";
