@@ -4,11 +4,18 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
+.img-md {
+  border-radius: 100%;
+  width: 75px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
 .sub-btn {
   border: none;
   padding: 10px 20px;
   border-radius: 3px;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 .subscribe {

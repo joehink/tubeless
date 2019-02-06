@@ -6,18 +6,20 @@ const ChannelHeader = (props) => {
     <div className="channel-header">
       {/* channel thumbnail image */}
       <img
-        className="img-sm"
+        className="img-md"
         src={props.thumbnail}
         alt={props.title}
       />
-      {/* name of channel */}
-      <p>{props.title}</p>
+      <div>
+        {/* name of channel */}
+        <p>{props.title}</p>
 
-      <SubscriptionButton
-        resultId={props.id}
-        thumbnail={props.thumbnail}
-        title={props.title}
-      />
+        <SubscriptionButton
+          resultId={props.id}
+          thumbnail={props.thumbnail}
+          title={props.title}
+        />
+      </div>
     </div>
   );
 };

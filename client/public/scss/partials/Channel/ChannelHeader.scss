@@ -3,12 +3,11 @@
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  .sub-btn {
-    margin-left: auto;
-    font-weight: bold;
-  }
   p {
-    margin-left: 10px;
+    margin: 0 0 10px 15px;
     font-size: 18px;
+  }
+  .sub-btn {
+    margin: 0 0 0 15px
   }
 }

@@ -354,11 +354,18 @@ template {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
+.img-md {
+  border-radius: 100%;
+  width: 75px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
 .sub-btn {
   border: none;
   padding: 10px 20px;
   border-radius: 3px;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 .subscribe {
@@ -462,13 +469,12 @@ template {
   align-items: center;
   padding: 10px 20px;
 }
-.channel-header .sub-btn {
-  margin-left: auto;
-  font-weight: bold;
-}
 .channel-header p {
-  margin-left: 10px;
+  margin: 0 0 10px 15px;
   font-size: 18px;
+}
+.channel-header .sub-btn {
+  margin: 0 0 0 15px;
 }
 
 html {
