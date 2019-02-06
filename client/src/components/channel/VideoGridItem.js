@@ -12,16 +12,16 @@ class VideoGridItem extends Component {
     } = this.props.video.snippet;
 
     return (
-      <div>
+      <div className="video-grid-item">
         {/* video thumbnail */}
-        <Link to={`/video/${this.props.video.id}`}>
+        <Link to={`/video/${this.props.video.id}`} className="thumbnail-link">
           <img
             src={thumbnails.medium.url}
             alt={title}
           />
         </Link>
         {/* video title */}
-        <Link to={`/video/${this.props.video.id}`}>
+        <Link to={`/video/${this.props.video.id}`} className="title-link">
           <h3>{title}</h3>
         </Link>
         {/* video views and date published */}

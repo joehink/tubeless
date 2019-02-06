@@ -482,6 +482,27 @@ template {
   margin: 0 0 0 15px;
 }
 
+.video-grid {
+  padding: 20px;
+}
+
+.video-grid-item {
+  margin-bottom: 40px;
+}
+.video-grid-item img {
+  width: 100%;
+}
+.video-grid-item .title-link {
+  color: black;
+  text-decoration: none;
+}
+.video-grid-item h3 {
+  margin: 10px 0 0;
+}
+.video-grid-item p {
+  margin: 10px 0 0;
+}
+
 html {
   height: 100%;
 }
