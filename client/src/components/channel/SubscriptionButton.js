@@ -17,6 +17,7 @@ class SubscriptionButton extends Component {
         // return a button that allows the user to unsubscribe
         // If subscription action is ongoing, disable button
         return <button
+          className="sub-btn unsubscribe"
           disabled={this.props.subscriptions.subOrUnsub}
           onClick={() => this.props.unsubscribeFromChannel(
             this.props.resultId,
@@ -31,6 +32,7 @@ class SubscriptionButton extends Component {
         // return a button that allows the user to subscribe
         // If subscription action is ongoing, disable button
         return <button
+            className="sub-btn subscribe"
             disabled={this.props.subscriptions.subOrUnsub}
             onClick={() => this.props.subscribeToChannel(
               this.props.resultId,

@@ -3,9 +3,13 @@ import SubscriptionButton from "./SubscriptionButton";
 
 const ChannelHeader = (props) => {
   return (
-    <div>
+    <div className="channel-header">
       {/* channel thumbnail image */}
-      <img src={props.thumbnail} alt={props.title} />
+      <img
+        className="img-sm"
+        src={props.thumbnail}
+        alt={props.title}
+      />
       {/* name of channel */}
       <p>{props.title}</p>
 

@@ -1,0 +1,14 @@
+.channel-header {
+  background: #F5F5F5;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  .sub-btn {
+    margin-left: auto;
+    font-weight: bold;
+  }
+  p {
+    margin-left: 10px;
+    font-size: 18px;
+  }
+}

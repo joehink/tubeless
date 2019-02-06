@@ -354,6 +354,22 @@ template {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
+.sub-btn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.subscribe {
+  color: white;
+  background: red;
+}
+
+.unsubscribe {
+  background: lightgray;
+}
+
 .main-nav {
   display: flex;
   justify-content: space-between;
@@ -438,6 +454,21 @@ template {
 .channel-screen {
   flex: 1;
   overflow-y: scroll;
+}
+
+.channel-header {
+  background: #F5F5F5;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+.channel-header .sub-btn {
+  margin-left: auto;
+  font-weight: bold;
+}
+.channel-header p {
+  margin-left: 10px;
+  font-size: 18px;
 }
 
 html {

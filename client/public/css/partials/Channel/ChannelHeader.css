@@ -1,0 +1,16 @@
+.channel-header {
+  background: #F5F5F5;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+.channel-header .sub-btn {
+  margin-left: auto;
+  font-weight: bold;
+}
+.channel-header p {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=ChannelHeader.css.map */
