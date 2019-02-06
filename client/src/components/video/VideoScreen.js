@@ -29,7 +29,7 @@ class VideoScreen extends Component {
   }
   renderVideoComponents() {
     return (
-      <div>
+      <div className="video-screen">
         <VideoPlayer videoId={this.props.video.id} />
         <VideoInfo
           title={this.props.video.snippet.title}

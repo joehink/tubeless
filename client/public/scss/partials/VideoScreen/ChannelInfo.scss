@@ -1,0 +1,22 @@
+.channel-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 10px;
+  .channelAndViews {
+    padding-left: 10px;
+    margin-right: auto;
+    margin-bottom: 10px;
+  }
+  .img-sm, .sub-btn {
+    margin-bottom: 10px;
+  }
+  h5 {
+    margin: 0 0 5px;
+    font-size: 16px;
+  }
+  p {
+    margin: 0;
+    color: gray;
+  }
+}

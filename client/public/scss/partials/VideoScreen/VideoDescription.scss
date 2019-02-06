@@ -1,0 +1,24 @@
+.video-description {
+  padding: 0 10px;
+  margin-bottom: 50px;
+  p {
+    white-space: pre-line;
+    line-height: 1.2em;
+  }
+  .less {
+    display: block;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 2.4em;
+  }
+  .toggle-description-button {
+    background: transparent;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+  }
+}

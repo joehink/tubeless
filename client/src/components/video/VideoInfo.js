@@ -4,9 +4,9 @@ import withHelpers from "../withHelpers";
 class VideoInfo extends Component {
   render() {
     return (
-      <div>
+      <div className="video-info">
         <h3>{ this.props.title }</h3>
-        <p>{this.props.formatViews(this.props.views)} views</p>
+        <p>{this.props.views.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} views</p>
       </div>
     );
   }
