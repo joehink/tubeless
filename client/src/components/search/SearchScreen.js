@@ -65,9 +65,11 @@ class SearchScreen extends Component {
       ]
     } else
 
-    return <ChannelResultList
-              results={this.props.search.channel.results}
-            />
+    if (this.props.search.channel.results.length > 0) {
+      return <ChannelResultList
+                results={this.props.search.channel.results}
+              />
+    }
   }
   render() {
     return (
