@@ -87,7 +87,7 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
       const videoRes = await axios('https://www.googleapis.com/youtube/v3/videos', {
         params: {
           access_token: accessToken,
-          part: "snippet,statistics",
+          part: "snippet,statistics,contentDetails",
           id: videoIds.toString()
         }
       })

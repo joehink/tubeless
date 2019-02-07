@@ -20,4 +20,15 @@
     color: black;
     text-decoration: none;
   }
+  .thumbnail {
+    display: flex;
+    flex-direction: column;
+  }
+  .duration {
+    background-color: rgba(0,0,0,0.8);
+    margin-left: auto;
+    color: white;
+    margin-top: -26px;
+    padding: 2px 5px;
+  }
 }

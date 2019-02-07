@@ -86,11 +86,23 @@ export default (ChildComponent) => {
       // if seconds > one minute
       return "Just now"
     }
+    formatDuration(duration) {
+      const array = duration.match(/(\d+)(?=[MHS])/ig)||[];
+      const formatted = array.map((item, i) => {
+          if (i > 0 && item.length<2) {
+            return '0' + item;
+          }
+          return item;
+      }).join(':');
+
+      return formatted;
+    }
     render() {
       return <ChildComponent
                 timeSincePublished={this.timeSincePublished}
                 formatPublishedDate={this.formatPublishedDate}
                 formatViews={this.formatViews}
+                formatDuration={this.formatDuration}
                 { ...this.props }
              />
     }

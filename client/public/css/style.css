@@ -494,6 +494,8 @@ template {
 
 .video-grid-item {
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
 }
 .video-grid-item img {
   width: 100%;
@@ -507,6 +509,13 @@ template {
 }
 .video-grid-item p {
   margin: 10px 0 0;
+}
+.video-grid-item .duration {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-left: auto;
+  color: white;
+  margin-top: -26px;
+  padding: 2px 5px;
 }
 
 .video-screen {
@@ -637,6 +646,17 @@ template {
 .video-result-list-item .channel-title-link {
   color: black;
   text-decoration: none;
+}
+.video-result-list-item .thumbnail {
+  display: flex;
+  flex-direction: column;
+}
+.video-result-list-item .duration {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-left: auto;
+  color: white;
+  margin-top: -26px;
+  padding: 2px 5px;
 }
 
 html {

@@ -10,6 +10,7 @@ class VideoGridItem extends Component {
       title,
       publishedAt
     } = this.props.video.snippet;
+    const { contentDetails } = this.props.video;
 
     return (
       <div className="video-grid-item">
@@ -20,6 +21,7 @@ class VideoGridItem extends Component {
             alt={title}
           />
         </Link>
+        <span className="duration">{this.props.formatDuration(contentDetails.duration)}</span>
         {/* video title */}
         <Link to={`/video/${this.props.video.id}`} className="title-link">
           <h3>{title}</h3>

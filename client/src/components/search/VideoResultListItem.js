@@ -4,15 +4,18 @@ import withHelpers from "../withHelpers";
 
 class VideoResultListItem extends Component {
   render() {
-    const { snippet, statistics } = this.props.result;
+    const { snippet, statistics, contentDetails } = this.props.result;
     return (
       <div className="video-result-list-item">
-        <Link to={`/video/${this.props.result.id}`}>
-          <img
-            src={snippet.thumbnails.medium.url}
-            alt={snippet.title}
-          />
-        </Link>
+        <div class="thumbnail">
+          <Link to={`/video/${this.props.result.id}`}>
+            <img
+              src={snippet.thumbnails.medium.url}
+              alt={snippet.title}
+            />
+          </Link>
+          <span className="duration">{this.props.formatDuration(contentDetails.duration)}</span>
+        </div>
         <div>
           <Link
             to={`/video/${this.props.result.id}`}
