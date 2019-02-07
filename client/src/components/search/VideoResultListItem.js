@@ -21,7 +21,7 @@ class VideoResultListItem extends Component {
             <h3>{snippet.title}</h3>
           </Link>
           <p>
-            {snippet.channelTitle} &#8226; {this.props.formatViews(statistics.viewCount)} views
+            <Link to={`/channel/${snippet.channelId}`} className="channel-title-link">{snippet.channelTitle}</Link> &#8226; {this.props.formatViews(statistics.viewCount)} views
             &#8226; {this.props.formatPublishedDate(snippet.publishedAt)}
           </p>
           <p className="video-search-description">{snippet.description}</p>

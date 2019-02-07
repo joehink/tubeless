@@ -634,6 +634,10 @@ template {
 .video-result-list-item .video-search-description {
   display: none;
 }
+.video-result-list-item .channel-title-link {
+  color: black;
+  text-decoration: none;
+}
 
 html {
   height: 100%;
