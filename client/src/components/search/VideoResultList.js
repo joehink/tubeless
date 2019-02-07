@@ -13,7 +13,7 @@ class VideoResultList extends Component {
   }
   render() {
     return (
-      <div>{ this.renderResults() }</div>
+      <div className="video-result-list">{ this.renderResults() }</div>
     )
   }
 }

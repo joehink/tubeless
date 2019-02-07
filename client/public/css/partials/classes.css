@@ -10,6 +10,12 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
+.img-lg {
+  border-radius: 100%;
+  width: 100px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
 .sub-btn {
   border: none;
   padding: 10px 20px;

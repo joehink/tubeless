@@ -14,7 +14,7 @@ class ChannelResultList extends Component {
   }
   render() {
     return (
-      <div>{ this.renderResults() }</div>
+      <div className="channel-result-list">{ this.renderResults() }</div>
     )
   }
 }

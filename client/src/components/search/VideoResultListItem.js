@@ -1,22 +1,30 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import withHelpers from "../withHelpers";
 
 class VideoResultListItem extends Component {
   render() {
     const { snippet, statistics } = this.props.result;
     return (
-      <div>
-        <img
-          src={snippet.thumbnails.medium.url}
-          alt={snippet.title}
-        />
+      <div className="video-result-list-item">
+        <Link to={`/video/${this.props.result.id}`}>
+          <img
+            src={snippet.thumbnails.medium.url}
+            alt={snippet.title}
+          />
+        </Link>
         <div>
-          <h3>{snippet.title}</h3>
+          <Link
+            to={`/video/${this.props.result.id}`}
+            className="title-link"
+          >
+            <h3>{snippet.title}</h3>
+          </Link>
           <p>
             {snippet.channelTitle} &#8226; {this.props.formatViews(statistics.viewCount)} views
             &#8226; {this.props.formatPublishedDate(snippet.publishedAt)}
           </p>
-          <p>{snippet.description}</p>
+          <p className="video-search-description">{snippet.description}</p>
         </div>
       </div>
     )

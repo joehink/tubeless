@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux"
 import VideoResultList from "./VideoResultList";
 import ChannelResultList from "./ChannelResultList";
-import { searchVideos, searchChannels } from "../../actions";
+import { searchVideos, searchChannels, clearSearchResults } from "../../actions";
 
 class SearchScreen extends Component {
   componentDidMount() {
+    this.props.clearSearchResults();
     // search for videos based on the term in url params
     this.props.searchVideos(
       this.props.auth.accessToken,
@@ -70,7 +71,7 @@ class SearchScreen extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="search-screen">
         {this.renderChannelSearchResults()}
         {this.renderVideoSearchResults()}
       </div>
@@ -82,4 +83,11 @@ const mapStateToProps = ({ search, auth, subscriptions }) => {
   return { search, auth }
 }
 
-export default connect(mapStateToProps, { searchVideos, searchChannels })(SearchScreen);
+export default connect(
+  mapStateToProps,
+  {
+    searchVideos,
+    searchChannels,
+    clearSearchResults
+  }
+)(SearchScreen);

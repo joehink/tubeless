@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { clearSearchResults } from "../../actions";
+import { clearSearchResults, closeSideBar } from "../../actions";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -11,6 +11,9 @@ class SearchBar extends Component {
     }
   }
   handleSearch(event) {
+    if (window.innerWidth < 768) {
+      this.props.closeSideBar();
+    }
     // stop page from refreshing when form is submitted
     event.preventDefault();
 
@@ -37,4 +40,11 @@ class SearchBar extends Component {
 }
 
 // export with withRouter so this.props.history is available
-export default withRouter(connect(null, { clearSearchResults })(SearchBar));
+export default withRouter(
+  connect(
+    null,
+    {
+      clearSearchResults,
+      closeSideBar
+    }
+  )(SearchBar));

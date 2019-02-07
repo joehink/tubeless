@@ -10,21 +10,22 @@ class ChannelResultListItem extends Component {
       channelId
     } = this.props.result.snippet;
     return (
-      <div>
+      <div className="channel-result-list-item">
       <Link to={`/channel/${channelId}`}>
         <img
+          className="img-lg"
           src={thumbnails.medium.url}
           alt={channelTitle}
         />
       </Link>
-      <Link to={`/channel/${channelId}`}>
+      <SubscriptionButton
+        resultId={channelId}
+        thumbnail={thumbnails.default.url}
+        title={channelTitle}
+      />
+      <Link className="channel-link" to={`/channel/${channelId}`}>
         <h4>{channelTitle}</h4>
       </Link>
-        <SubscriptionButton
-          resultId={channelId}
-          thumbnail={thumbnails.default.url}
-          title={channelTitle}
-        />
       </div>
     )
   }

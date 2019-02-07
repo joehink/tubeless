@@ -360,6 +360,12 @@ template {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
+.img-lg {
+  border-radius: 100%;
+  width: 100px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
 .sub-btn {
   border: none;
   padding: 10px 20px;
@@ -506,6 +512,7 @@ template {
 .video-screen {
   flex: 1;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .video-player {
@@ -567,6 +574,61 @@ template {
   outline: none;
   padding: 0;
   cursor: pointer;
+}
+
+.search-screen {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.channel-result-list {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.channel-result-list-item {
+  text-align: center;
+  padding: 20px;
+}
+.channel-result-list-item .sub-btn {
+  margin: 15px 0 0;
+}
+.channel-result-list-item .channel-link {
+  color: black;
+  text-decoration: none;
+}
+.channel-result-list-item .channel-link h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 20px;
+  max-height: 40px;
+}
+
+.video-result-list {
+  padding: 20px;
+}
+
+.video-result-list-item {
+  margin-bottom: 40px;
+}
+.video-result-list-item img {
+  width: 100%;
+}
+.video-result-list-item .title-link {
+  color: black;
+  text-decoration: none;
+}
+.video-result-list-item h3 {
+  margin: 10px 0 0;
+}
+.video-result-list-item p {
+  margin: 10px 0 0;
+}
+.video-result-list-item .video-search-description {
+  display: none;
 }
 
 html {
