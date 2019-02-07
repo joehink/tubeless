@@ -542,6 +542,10 @@ template {
 .channel-info .img-sm, .channel-info .sub-btn {
   margin-bottom: 10px;
 }
+.channel-info .channel-title-link {
+  color: black;
+  text-decoration: none;
+}
 .channel-info h5 {
   margin: 0 0 5px;
   font-size: 16px;

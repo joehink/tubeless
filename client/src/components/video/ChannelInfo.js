@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import SubscriptionButton from "../channel/SubscriptionButton";
 import withHelpers from "../withHelpers";
 
@@ -22,13 +23,20 @@ class ChannelInfo extends Component {
   render() {
     return (
       <div className="channel-info">
-        <img
-          className="img-sm"
-          src={this.props.thumbnail}
-          alt={this.props.channelTitle}
-        />
+        <Link to={`/channel/${this.props.channelId}`}>
+          <img
+            className="img-sm"
+            src={this.props.thumbnail}
+            alt={this.props.channelTitle}
+          />
+        </Link>
         <div className="channelAndViews">
-          <h5>{this.props.channelTitle}</h5>
+          <Link
+            to={`/channel/${this.props.channelId}`}
+            className="channel-title-link"
+          >
+            <h5>{this.props.channelTitle}</h5>
+          </Link>
           <p>{this.renderDatePublished(this.props.publishedAt)}</p>
         </div>
         <SubscriptionButton
