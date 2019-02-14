@@ -51,7 +51,7 @@ class SearchScreen extends Component {
         <div key="2"><Spinner /></div>
       ]
     } else if (this.props.search.video.results.length === 0) {
-      return <div>No Results</div>
+      return <div className="center-screen">No Results</div>
     } else {
       return <VideoResultList
                 results={this.props.search.video.results}

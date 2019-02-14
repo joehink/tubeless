@@ -51,9 +51,9 @@ class VideoScreen extends Component {
   renderVideo() {
     switch (this.props.video) {
       case null:
-        return <div className="flex-page-wrapper"><Spinner /></div>;
+        return <div className="center-screen"><Spinner /></div>;
       case false:
-        return <div className="flex-page-wrapper">No video</div>;
+        return <div className="center-screen">No video</div>;
       default:
         return this.renderVideoComponents();
     }

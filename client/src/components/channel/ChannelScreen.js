@@ -60,7 +60,7 @@ class ChannelScreen extends Component {
         <div key="2"><Spinner /></div>
       ]
     } else if (this.props.channel.video.results.length === 0) {
-      return <div>This channel has no videos</div>
+      return <div className="center-screen">This channel has no videos</div>
     } else {
       // when fetch for channel videos ends
       return <VideoGrid

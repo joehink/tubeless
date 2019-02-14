@@ -38,10 +38,8 @@
   background: lightgray;
 }
 
-.flex-page-wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.center-screen {
+  display: block;
+  text-align: center;
+  margin: 50px auto;
 }
