@@ -13,9 +13,9 @@ class SideBar extends Component {
   }
   renderSubscriptions() {
       if (this.props.subscriptions.loading) {
-        return <Spinner />
+        return <div className="flex-page-wrapper"><Spinner /></div>
       } else if (this.props.subscriptions.list.length === 0) {
-        return <div>No subscriptions</div>
+        return <div className="flex-page-wrapper">No subscriptions</div>
       } else {
         return <List collection={this.props.subscriptions.list} />
       }

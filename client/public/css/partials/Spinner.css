@@ -8,7 +8,7 @@
   height: 40px;
   animation: spin 2s linear infinite;
   display: block;
-  margin: 10px auto; }
+  margin: auto; }
 
 @keyframes spin {
   0% {
