@@ -6,6 +6,7 @@ import VideoPlayer from "./VideoPlayer";
 import VideoInfo from "./VideoInfo";
 import ChannelInfo from "./ChannelInfo";
 import VideoDescription from "./VideoDescription";
+import Spinner from "../Spinner";
 
 class VideoScreen extends Component {
   componentDidMount() {
@@ -50,7 +51,7 @@ class VideoScreen extends Component {
   renderVideo() {
     switch (this.props.video) {
       case null:
-        return <div>Spinner</div>;
+        return <Spinner />;
       case false:
         return <div>No Video</div>;
       default:

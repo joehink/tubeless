@@ -4,6 +4,8 @@ import VideoResultList from "./VideoResultList";
 import ChannelResultList from "./ChannelResultList";
 import { searchVideos, searchChannels, clearSearchResults } from "../../actions";
 
+import Spinner from "../Spinner";
+
 class SearchScreen extends Component {
   componentDidMount() {
     this.props.clearSearchResults();
@@ -46,7 +48,7 @@ class SearchScreen extends Component {
           key="1"
           results={this.props.search.video.results}
         />,
-        <div key="2">Spinner</div>
+        <div key="2"><Spinner /></div>
       ]
     } else
 
@@ -61,7 +63,7 @@ class SearchScreen extends Component {
           key="3"
           results={this.props.search.channel.results}
         />,
-        <div key="4">Spinner</div>
+        <div key="4"><Spinner /></div>
       ]
     } else
 

@@ -7,6 +7,7 @@ import {
 } from "../../actions";
 import ChannelHeader from "./ChannelHeader";
 import VideoGrid from "./VideoGrid";
+import Spinner from "../Spinner";
 
 class ChannelScreen extends Component {
   componentDidMount() {
@@ -56,7 +57,7 @@ class ChannelScreen extends Component {
           key="1"
           videos={this.props.channel.video.results}
         />,
-        <div key="2">Spinner</div>
+        <div key="2"><Spinner /></div>
       ]
     } else
 

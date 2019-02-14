@@ -7,7 +7,7 @@ class VideoResultListItem extends Component {
     const { snippet, statistics, contentDetails } = this.props.result;
     return (
       <div className="video-result-list-item">
-        <div class="thumbnail">
+        <div className="thumbnail">
           <Link to={`/video/${this.props.result.id}`}>
             <img
               src={snippet.thumbnails.medium.url}
