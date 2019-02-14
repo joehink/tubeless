@@ -50,11 +50,13 @@ class SearchScreen extends Component {
         />,
         <div key="2"><Spinner /></div>
       ]
-    } else
-
-    return <VideoResultList
-              results={this.props.search.video.results}
-            />
+    } else if (this.props.search.video.results.length === 0) {
+      return <div>No Results</div>
+    } else {
+      return <VideoResultList
+                results={this.props.search.video.results}
+              />
+    }
   }
   renderChannelSearchResults() {
     if (this.props.search.channel.loading) {
@@ -65,7 +67,7 @@ class SearchScreen extends Component {
         />,
         <div key="4"><Spinner /></div>
       ]
-    } else
+    }
 
     if (this.props.search.channel.results.length > 0) {
       return <ChannelResultList
