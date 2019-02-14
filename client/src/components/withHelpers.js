@@ -87,13 +87,59 @@ export default (ChildComponent) => {
       return "Just now"
     }
     formatDuration(duration) {
-      const array = duration.match(/(\d+)(?=[MHS])/ig)||[];
-      const formatted = array.map((item, i) => {
-          if (i > 0 && item.length<2) {
-            return '0' + item;
-          }
-          return item;
-      }).join(':');
+      // const array = duration.match(/(\d+)(?=[MHS])/ig)||[];
+      // if (array.length > 1) {
+      //   const formatted = array.map((item, i) => {
+      //       if (i > 0 && item.length<2) {
+      //         return '0' + item;
+      //       }
+      //       return item;
+      //   }).join(':');
+      //
+      //   return formatted;
+      // } else if (array[0].length === 1) {
+      //   return `0:0${array[0]}`
+      // } else if (array[0].length === 2) {
+      //   return `0:${array[0]}`
+      // }
+
+      var reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
+      let seconds = 0, minutes = 0, hours = 0;
+      let formatted;
+
+      if (reptms.test(duration)) {
+        const matches = reptms.exec(duration);
+        // if duration is over 1 hour
+        if (matches[1]) hours = Number(matches[1]);
+        // if duration is over one minute
+        if (matches[2]) minutes = Number(matches[2]);
+        // if duration is over one second
+        if (matches[3]) seconds = Number(matches[3]);
+
+        // if seconds is less than 10
+        if (seconds < 10) {
+          // add zero in front of seconds
+          seconds = `0${seconds}`
+        }
+
+        // add seconds to formatted
+        formatted = `:${seconds}`
+
+        // if minutes is less than 10 and the video is at least 1 hour long
+        if (minutes < 10 && hours) {
+          // add zero in front of minutes
+          minutes = `0${minutes}`
+        }
+
+        // add minutes to formatted
+        formatted = minutes + formatted;
+
+        // if the video is over one hour
+        if (hours) {
+          // add hours to formatted
+          formatted = `${hours}:${formatted}`
+        }
+      }
 
       return formatted;
     }
