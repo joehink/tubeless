@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchSubscriptions } from "../../actions"
 
 import List from "../common/list/List";
+import Spinner from "../Spinner";
 
 class SideBar extends Component {
   componentDidMount() {
@@ -11,10 +12,12 @@ class SideBar extends Component {
     this.props.fetchSubscriptions(this.props.auth.accessToken)
   }
   renderSubscriptions() {
-      if (!this.props.subscriptions.loading) {
-        return <List collection={this.props.subscriptions.list} />
+      if (this.props.subscriptions.loading) {
+        return <Spinner />
+      } else if (this.props.subscriptions.list.length === 0) {
+        return <div>No subscriptions</div>
       } else {
-        return <div>Spinner</div>
+        return <List collection={this.props.subscriptions.list} />
       }
   }
   render() {
