@@ -51,10 +51,13 @@ class VideoScreen extends Component {
   renderVideo() {
     switch (this.props.video) {
       case null:
+        // request is still in progress
         return <div className="center-screen"><Spinner /></div>;
       case false:
+        // no video found matching the id url param
         return <div className="center-screen">No video</div>;
       default:
+        // video found
         return this.renderVideoComponents();
     }
   }
