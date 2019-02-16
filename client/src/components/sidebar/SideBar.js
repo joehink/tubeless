@@ -12,13 +12,17 @@ class SideBar extends Component {
     this.props.fetchSubscriptions(this.props.auth.accessToken)
   }
   renderSubscriptions() {
-      if (this.props.subscriptions.loading) {
-        return <div className="center-screen"><Spinner /></div>
-      } else if (this.props.subscriptions.list.length === 0) {
-        return <div className="center-screen">No subscriptions</div>
-      } else {
-        return <List collection={this.props.subscriptions.list} />
-      }
+    // if request for subscriptions is still being made
+    if (this.props.subscriptions.loading) {
+      // render spinner
+      return <div className="center-screen"><Spinner /></div>
+    } else if (this.props.subscriptions.list.length === 0) {
+      // if request returned zero subscriptions
+      return <div className="center-screen">No subscriptions</div>
+    } else {
+      // request was successful and returned subscriptions
+      return <List collection={this.props.subscriptions.list} />
+    }
   }
   render() {
     return (
