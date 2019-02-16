@@ -5,6 +5,7 @@ import { closeSideBar } from "../../../actions";
 
 class ListItem extends Component {
   shouldCloseSideBar() {
+    // side bar should be hidden by default when in mobile
     if (window.innerWidth < 768) {
       this.props.closeSideBar();
     }
