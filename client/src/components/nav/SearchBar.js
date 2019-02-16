@@ -11,9 +11,11 @@ class SearchBar extends Component {
     }
   }
   handleSearch(event) {
+    // when in mobile, the sidebar should be closed after making a search
     if (window.innerWidth < 768) {
       this.props.closeSideBar();
     }
+    
     // stop page from refreshing when form is submitted
     event.preventDefault();
 
