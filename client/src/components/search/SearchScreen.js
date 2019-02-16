@@ -51,6 +51,7 @@ class SearchScreen extends Component {
 
     // if the scrollTop location passes the threshold
     // and there is not a request currently happening
+    // and there is a pageToken
     if (event.target.scrollTop >= threshold &&
         !this.props.search.video.loading &&
         this.props.search.video.pageToken) {

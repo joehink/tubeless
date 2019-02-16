@@ -53,8 +53,9 @@ class ChannelScreen extends Component {
   handleScroll(event) {
     // select video grid item element
     const gridItem = document.querySelector(".video-grid-item");
-    // threshold = height of video grid - 5 video grid items
+    // if gridItem is on screen
     if (gridItem) {
+      // threshold = height of video grid - 5 video grid items
       const threshold = event.target.scrollHeight - (gridItem.clientHeight * 5);
       // if the scrollTop location passes the threshold
       // and there is not a request currently happening
