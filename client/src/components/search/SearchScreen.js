@@ -42,6 +42,7 @@ class SearchScreen extends Component {
     }
   }
   renderVideoSearchResults() {
+    // if request for videos is still being made
     if (this.props.search.video.loading) {
       return [
         <VideoResultList
@@ -51,14 +52,17 @@ class SearchScreen extends Component {
         <div key="2"><Spinner /></div>
       ]
     } else if (this.props.search.video.results.length === 0) {
+      // if request returned zero videos
       return <div className="center-screen">No Results</div>
     } else {
+      // request was successful and returned videos
       return <VideoResultList
                 results={this.props.search.video.results}
               />
     }
   }
   renderChannelSearchResults() {
+    // if request for channels is still being made
     if (this.props.search.channel.loading) {
       return [
         <ChannelResultList
@@ -69,6 +73,7 @@ class SearchScreen extends Component {
       ]
     }
 
+    // if request returned any channels
     if (this.props.search.channel.results.length > 0) {
       return <ChannelResultList
                 results={this.props.search.channel.results}
