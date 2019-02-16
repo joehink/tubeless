@@ -87,27 +87,14 @@ export default (ChildComponent) => {
       return "Just now"
     }
     formatDuration(duration) {
-      // const array = duration.match(/(\d+)(?=[MHS])/ig)||[];
-      // if (array.length > 1) {
-      //   const formatted = array.map((item, i) => {
-      //       if (i > 0 && item.length<2) {
-      //         return '0' + item;
-      //       }
-      //       return item;
-      //   }).join(':');
-      //
-      //   return formatted;
-      // } else if (array[0].length === 1) {
-      //   return `0:0${array[0]}`
-      // } else if (array[0].length === 2) {
-      //   return `0:${array[0]}`
-      // }
-
-      var reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
+      //regEx for finding hours, minutes, seconds in duration
+      const regEx = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
       let seconds = 0, minutes = 0, hours = 0;
       let formatted;
 
-      if (reptms.test(duration)) {
+      // if regEx matches anything in duration
+      if (regEx.test(duration)) {
+        // array of hours, minutes seconds
         const matches = reptms.exec(duration);
         // if duration is over 1 hour
         if (matches[1]) hours = Number(matches[1]);
