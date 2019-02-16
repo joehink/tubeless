@@ -95,7 +95,7 @@ export default (ChildComponent) => {
       // if regEx matches anything in duration
       if (regEx.test(duration)) {
         // array of hours, minutes seconds
-        const matches = reptms.exec(duration);
+        const matches = regEx.exec(duration);
         // if duration is over 1 hour
         if (matches[1]) hours = Number(matches[1]);
         // if duration is over one minute

@@ -11,14 +11,6 @@ import Spinner from "../Spinner";
 
 class ChannelScreen extends Component {
   componentDidMount() {
-    // add scroll event listener to the channel screen element
-    document
-      .querySelector('.channel-screen')
-      .addEventListener("scroll", event => {
-        // on scroll call this.handleScroll
-        this.handleScroll(event);
-      });
-
     // reset channel to initial state
     this.props.clearChannel();
 
@@ -109,7 +101,7 @@ class ChannelScreen extends Component {
   }
   render() {
     return (
-      <div className="channel-screen">
+      <div className="channel-screen" onScroll={this.handleScroll.bind(this)}>
         {this.renderHeader()}
         {this.renderChannelVideos()}
       </div>

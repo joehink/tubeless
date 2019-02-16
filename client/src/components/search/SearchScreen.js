@@ -9,6 +9,7 @@ import Spinner from "../Spinner";
 class SearchScreen extends Component {
   componentDidMount() {
     this.props.clearSearchResults();
+
     // search for videos based on the term in url params
     this.props.searchVideos(
       this.props.auth.accessToken,
@@ -31,7 +32,8 @@ class SearchScreen extends Component {
     if (oldTerm !== newTerm) {
       // search for new videos
       this.props.searchVideos(
-        this.props.auth.accessToken, this.props.match.params.searchTerm
+        this.props.auth.accessToken,
+        this.props.match.params.searchTerm
       );
 
       // search for new channels
@@ -41,6 +43,23 @@ class SearchScreen extends Component {
       );
     }
   }
+  handleScroll(event) {
+    // select video result item element
+    const videoResultItem = document.querySelector(".video-result-list-item");
+    // threshold = height of video result list - 5 video result items
+    const threshold = event.target.scrollHeight - (videoResultItem.clientHeight * 5);
+
+    // if the scrollTop location passes the threshold
+    // and there is not a request currently happening
+    if (event.target.scrollTop >= threshold & !this.props.search.video.loading) {
+      // fetch more videos
+      this.props.searchVideos(
+        this.props.auth.accessToken,
+        this.props.match.params.searchTerm,
+        this.props.search.video.pageToken
+      );
+    }
+  };
   renderVideoSearchResults() {
     // if request for videos is still being made
     if (this.props.search.video.loading) {
@@ -62,17 +81,6 @@ class SearchScreen extends Component {
     }
   }
   renderChannelSearchResults() {
-    // if request for channels is still being made
-    if (this.props.search.channel.loading) {
-      return [
-        <ChannelResultList
-          key="3"
-          results={this.props.search.channel.results}
-        />,
-        <div key="4"><Spinner /></div>
-      ]
-    }
-
     // if request returned any channels
     if (this.props.search.channel.results.length > 0) {
       return <ChannelResultList
@@ -82,7 +90,7 @@ class SearchScreen extends Component {
   }
   render() {
     return (
-      <div className="search-screen">
+      <div onScroll={this.handleScroll.bind(this)} className="search-screen">
         {this.renderChannelSearchResults()}
         {this.renderVideoSearchResults()}
       </div>
