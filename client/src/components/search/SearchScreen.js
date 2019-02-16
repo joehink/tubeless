@@ -46,21 +46,25 @@ class SearchScreen extends Component {
   handleScroll(event) {
     // select video result item element
     const videoResultItem = document.querySelector(".video-result-list-item");
-    // threshold = height of video result list - 5 video result items
-    const threshold = event.target.scrollHeight - (videoResultItem.clientHeight * 5);
 
-    // if the scrollTop location passes the threshold
-    // and there is not a request currently happening
-    // and there is a pageToken
-    if (event.target.scrollTop >= threshold &&
-        !this.props.search.video.loading &&
-        this.props.search.video.pageToken) {
-      // fetch more videos
-      this.props.searchVideos(
-        this.props.auth.accessToken,
-        this.props.match.params.searchTerm,
-        this.props.search.video.pageToken
-      );
+    // if video result item has been rendered
+    if (videoResultItem) {
+      // threshold = height of video result list - 5 video result items
+      const threshold = event.target.scrollHeight - (videoResultItem.clientHeight * 5);
+
+      // if the scrollTop location passes the threshold
+      // and there is not a request currently happening
+      // and there is a pageToken
+      if (event.target.scrollTop >= threshold &&
+          !this.props.search.video.loading &&
+          this.props.search.video.pageToken) {
+        // fetch more videos
+        this.props.searchVideos(
+          this.props.auth.accessToken,
+          this.props.match.params.searchTerm,
+          this.props.search.video.pageToken
+        );
+      }
     }
   };
   renderVideoSearchResults() {
