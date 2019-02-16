@@ -11,6 +11,11 @@ import Spinner from "../Spinner";
 
 class ChannelScreen extends Component {
   componentDidMount() {
+    this.scrollListener = document.querySelector('.channel-screen').addEventListener("scroll", e => {
+      this.handleScroll(e);
+      // console.log(e);
+    });
+
     // reset channel to initial state
     this.props.clearChannel();
 
@@ -49,6 +54,20 @@ class ChannelScreen extends Component {
       );
     }
   }
+  handleScroll(e) {
+    const gridItem = document.querySelector(".video-grid-item");
+    const threshold = e.target.scrollHeight - (gridItem.clientHeight * 5);
+    // console.log("scrollTop:",e.target.scrollTop);
+
+    if (e.target.scrollTop >= threshold & !this.props.channel.video.loading) {
+      this.props.fetchChannelVideos(
+        this.props.auth.accessToken,
+        this.props.match.params.id,
+        this.props.channel.video.pageToken
+      );
+    }
+
+  };
   renderChannelVideos() {
     // if fetch for videos is still happening
     if (this.props.channel.video.loading) {
