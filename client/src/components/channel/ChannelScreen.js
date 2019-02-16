@@ -11,10 +11,13 @@ import Spinner from "../Spinner";
 
 class ChannelScreen extends Component {
   componentDidMount() {
-    this.scrollListener = document.querySelector('.channel-screen').addEventListener("scroll", e => {
-      this.handleScroll(e);
-      // console.log(e);
-    });
+    // add scroll event listener to the channel screen element
+    document
+      .querySelector('.channel-screen')
+      .addEventListener("scroll", event => {
+        // on scroll call this.handleScroll
+        this.handleScroll(event);
+      });
 
     // reset channel to initial state
     this.props.clearChannel();
@@ -54,12 +57,16 @@ class ChannelScreen extends Component {
       );
     }
   }
-  handleScroll(e) {
+  handleScroll(event) {
+    // select video grid item element
     const gridItem = document.querySelector(".video-grid-item");
-    const threshold = e.target.scrollHeight - (gridItem.clientHeight * 5);
-    // console.log("scrollTop:",e.target.scrollTop);
+    // threshold = height of video grid - 5 video grid items
+    const threshold = event.target.scrollHeight - (gridItem.clientHeight * 5);
 
-    if (e.target.scrollTop >= threshold & !this.props.channel.video.loading) {
+    // if the scrollTop location passes the threshold
+    // and there is not a request currently happening
+    if (event.target.scrollTop >= threshold & !this.props.channel.video.loading) {
+      // fetch more videos
       this.props.fetchChannelVideos(
         this.props.auth.accessToken,
         this.props.match.params.id,
@@ -79,6 +86,7 @@ class ChannelScreen extends Component {
         <div key="2"><Spinner /></div>
       ]
     } else if (this.props.channel.video.results.length === 0) {
+      // fetch returned zero videos
       return <div className="center-screen">This channel has no videos</div>
     } else {
       // when fetch for channel videos ends
