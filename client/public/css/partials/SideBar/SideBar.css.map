@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":["../../../scss/partials/SideBar/SideBar.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;;AAEF;EACE;EACA;;;AAIJ;EACE","file":"SideBar.css"}
+{
+"version": 3,
+"mappings": "AAAA,SAAU;EACR,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,GAAG;EACV,gBAAgB,EAAE,OAAO;EACzB,UAAU,EAAE,MAAM;EAClB,OAAO,EAAE,MAAM;EACf,UAAU,EAAE,8BAA2B;EACvC,wBAAe;IACb,SAAS,EAAE,IAAI;EAEjB,YAAG;IACD,MAAM,EAAE,CAAC;IACT,OAAO,EAAE,SAAS;;AAItB,MAAO;EACL,OAAO,EAAE,IAAI",
+"sources": ["../../../scss/partials/SideBar/SideBar.scss"],
+"names": [],
+"file": "SideBar.css"
+}

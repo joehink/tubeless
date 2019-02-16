@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":["../../../scss/partials/SearchScreen/ChannelResultListItem.scss"],"names":[],"mappings":"AAAA;EACE;EACA;;AACA;EACE;;AAEF;EACE;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA","file":"ChannelResultListItem.css"}
+{
+"version": 3,
+"mappings": "AAAA,yBAA0B;EACxB,UAAU,EAAE,MAAM;EAClB,OAAO,EAAE,IAAI;EACb,kCAAS;IACP,MAAM,EAAE,QAAQ;EAElB,uCAAc;IACZ,KAAK,EAAE,KAAK;IACZ,eAAe,EAAE,IAAI;EAEvB,0CAAiB;IACf,QAAQ,EAAE,MAAM;IAChB,aAAa,EAAE,QAAQ;IACvB,OAAO,EAAE,WAAW;IACpB,kBAAkB,EAAE,QAAQ;IAC5B,kBAAkB,EAAE,CAAC;IACrB,WAAW,EAAE,IAAI;IACjB,UAAU,EAAE,IAAI;IAChB,aAAa,EAAE,CAAC",
+"sources": ["../../../scss/partials/SearchScreen/ChannelResultListItem.scss"],
+"names": [],
+"file": "ChannelResultListItem.css"
+}

@@ -34,6 +34,7 @@ class ChannelScreen extends Component {
 
     // if the new id is different from th old id
     if (oldId !== newId) {
+      window.scrollTo(0,0);
       this.props.clearChannel();
 
       // fetch channel info
@@ -53,19 +54,22 @@ class ChannelScreen extends Component {
     // select video grid item element
     const gridItem = document.querySelector(".video-grid-item");
     // threshold = height of video grid - 5 video grid items
-    const threshold = event.target.scrollHeight - (gridItem.clientHeight * 5);
-
-    // if the scrollTop location passes the threshold
-    // and there is not a request currently happening
-    if (event.target.scrollTop >= threshold & !this.props.channel.video.loading) {
-      // fetch more videos
-      this.props.fetchChannelVideos(
-        this.props.auth.accessToken,
-        this.props.match.params.id,
-        this.props.channel.video.pageToken
-      );
+    if (gridItem) {
+      const threshold = event.target.scrollHeight - (gridItem.clientHeight * 5);
+      // if the scrollTop location passes the threshold
+      // and there is not a request currently happening
+      // and there is a pageToken
+      if (event.target.scrollTop >= threshold &&
+          !this.props.channel.video.loading &&
+          this.props.channel.video.pageToken) {
+        // fetch more videos
+        this.props.fetchChannelVideos(
+          this.props.auth.accessToken,
+          this.props.match.params.id,
+          this.props.channel.video.pageToken
+        );
+      }
     }
-
   };
   renderChannelVideos() {
     // if fetch for videos is still happening

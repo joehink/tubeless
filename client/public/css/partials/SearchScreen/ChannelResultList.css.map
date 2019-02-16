@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":["../../../scss/partials/SearchScreen/ChannelResultList.scss"],"names":[],"mappings":"AAAA;EACE;EACA","file":"ChannelResultList.css"}
+{
+"version": 3,
+"mappings": "AAAA,oBAAqB;EACnB,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,MAAM;EAClB,gBAAgB,EAAE,OAAO",
+"sources": ["../../../scss/partials/SearchScreen/ChannelResultList.scss"],
+"names": [],
+"file": "ChannelResultList.css"
+}

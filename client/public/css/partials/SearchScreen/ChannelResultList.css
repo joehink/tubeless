@@ -1,6 +1,6 @@
 .channel-result-list {
   display: flex;
   overflow-x: scroll;
-}
+  background-color: #F5F5F5; }
 
 /*# sourceMappingURL=ChannelResultList.css.map */
