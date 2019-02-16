@@ -5,6 +5,7 @@ import withHelpers from "../withHelpers";
 
 class ChannelInfo extends Component {
   renderDatePublished(publishedAt) {
+    // Array of months
     const monthNames = [
      "January", "February", "March",
      "April", "May", "June", "July",
@@ -12,12 +13,19 @@ class ChannelInfo extends Component {
      "November", "December"
    ];
 
+   // create new date object from date video was published
    const date = new Date(publishedAt)
 
+   // day of the month
    const day = date.getDate();
+
+   // month index to get full month name from monthNames
    const monthIndex = date.getMonth();
+
+   // year
    const year = date.getFullYear();
 
+   // return formatted date
    return `${monthNames[monthIndex]} ${day}, ${year}`;
   }
   render() {
