@@ -32,3 +32,28 @@
     padding: 2px 5px;
   }
 }
+
+@media(min-width: 768px) {
+  .video-result-list-item {
+    display: flex;
+    img {
+      width: 300px;
+    }
+    .thumbnail {
+      margin-right: 10px;
+    }
+    h3 {
+      margin: 0;
+    }
+    .video-search-description {
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-height: 2.4em;
+      white-space: pre-line;
+      line-height: 1.2em;
+      word-break: break-all;
+      color: #555;
+    }
+  }
+}

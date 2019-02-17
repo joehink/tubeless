@@ -633,6 +633,24 @@ template {
     margin-top: -26px;
     padding: 2px 5px; }
 
+@media (min-width: 768px) {
+  .video-result-list-item {
+    display: flex; }
+    .video-result-list-item img {
+      width: 300px; }
+    .video-result-list-item .thumbnail {
+      margin-right: 10px; }
+    .video-result-list-item h3 {
+      margin: 0; }
+    .video-result-list-item .video-search-description {
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-height: 2.4em;
+      white-space: pre-line;
+      line-height: 1.2em;
+      word-break: break-all;
+      color: #555; } }
 .spinner {
   border: 5px solid #f3f3f3;
   /* Light grey */
