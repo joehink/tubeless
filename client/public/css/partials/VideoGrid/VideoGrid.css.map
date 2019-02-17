@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":["../../../scss/partials/VideoGrid/VideoGrid.scss"],"names":[],"mappings":"AAAA;EACE","file":"VideoGrid.css"}
+{
+"version": 3,
+"mappings": "AAAA,WAAY;EACV,OAAO,EAAE,WAAW;;AAGtB,yBAAyB;EACvB,WAAY;IACV,OAAO,EAAE,IAAI;IACb,SAAS,EAAE,IAAI",
+"sources": ["../../../scss/partials/VideoGrid/VideoGrid.scss"],
+"names": [],
+"file": "VideoGrid.css"
+}

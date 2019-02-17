@@ -1,3 +1,10 @@
 .video-grid {
   padding: 40px 20px 0;
 }
+
+@media(min-width: 768px) {
+  .video-grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

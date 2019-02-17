@@ -14,8 +14,10 @@ class VideoGrid extends Component {
   }
   render() {
     return (
-      <div className="video-grid">
-        {this.renderVideos()}
+      <div className="container">
+        <div className="video-grid">
+            {this.renderVideos()}
+        </div>
       </div>
     )
   }

@@ -1,27 +1,34 @@
 .video-grid-item {
   margin-bottom: 40px;
   display: flex;
-  flex-direction: column;
-}
-.video-grid-item img {
-  width: 100%;
-}
-.video-grid-item .title-link {
-  color: black;
-  text-decoration: none;
-}
-.video-grid-item h3 {
-  margin: 10px 0 0;
-}
-.video-grid-item p {
-  margin: 10px 0 0;
-}
-.video-grid-item .duration {
-  background-color: rgba(0, 0, 0, 0.8);
-  margin-left: auto;
-  color: white;
-  margin-top: -26px;
-  padding: 2px 5px;
-}
+  flex-direction: column; }
+  .video-grid-item img {
+    width: 100%; }
+  .video-grid-item .title-link {
+    color: black;
+    text-decoration: none; }
+  .video-grid-item h3 {
+    margin: 10px 0 0; }
+  .video-grid-item p {
+    margin: 10px 0 0; }
+  .video-grid-item .duration {
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-left: auto;
+    color: white;
+    margin-top: -26px;
+    padding: 2px 5px; }
+
+@media (min-width: 768px) {
+  .video-grid-item {
+    width: 50%;
+    padding: 10px; } }
+@media (min-width: 1000px) {
+  .video-grid-item {
+    width: 33.3%;
+    padding: 10px; } }
+@media (min-width: 1300px) {
+  .video-grid-item {
+    width: 25%;
+    padding: 10px; } }
 
 /*# sourceMappingURL=VideoGridItem.css.map */
