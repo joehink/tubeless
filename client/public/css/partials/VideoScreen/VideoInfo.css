@@ -2,7 +2,7 @@
   padding: 10px 15px; }
   .video-info h3 {
     margin: 0;
-    word-wrap: break-word; }
+    word-break: break-all; }
   .video-info .views {
     margin-bottom: 0; }
 

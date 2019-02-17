@@ -480,7 +480,8 @@ template {
     color: black;
     text-decoration: none; }
   .video-grid-item h3 {
-    margin: 10px 0 0; }
+    margin: 10px 0 0;
+    word-break: break-all; }
   .video-grid-item p {
     margin: 10px 0 0; }
   .video-grid-item .duration {
@@ -524,7 +525,7 @@ template {
   padding: 10px 15px; }
   .video-info h3 {
     margin: 0;
-    word-wrap: break-word; }
+    word-break: break-all; }
   .video-info .views {
     margin-bottom: 0; }
 
@@ -558,7 +559,8 @@ template {
   margin-bottom: 50px; }
   .video-description p {
     white-space: pre-line;
-    line-height: 1.2em; }
+    line-height: 1.2em;
+    word-break: break-all; }
   .video-description .less {
     display: block;
     text-overflow: ellipsis;
@@ -599,7 +601,8 @@ template {
     -webkit-line-clamp: 2;
     line-height: 20px;
     max-height: 40px;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    word-break: break-all; }
 
 .video-result-list {
   padding: 20px; }

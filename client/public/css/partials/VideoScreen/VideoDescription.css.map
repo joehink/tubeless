@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":["../../../scss/partials/VideoScreen/VideoDescription.scss"],"names":[],"mappings":"AAAA;EACE;EACA;;AACA;EACE;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA","file":"VideoDescription.css"}
+{
+"version": 3,
+"mappings": "AAAA,kBAAmB;EACjB,OAAO,EAAE,MAAM;EACf,aAAa,EAAE,IAAI;EACnB,oBAAE;IACA,WAAW,EAAE,QAAQ;IACrB,WAAW,EAAE,KAAK;IAClB,UAAU,EAAE,SAAS;EAEvB,wBAAM;IACJ,OAAO,EAAE,KAAK;IACd,aAAa,EAAE,QAAQ;IACvB,SAAS,EAAE,UAAU;IACrB,QAAQ,EAAE,MAAM;IAChB,UAAU,EAAE,KAAK;EAEnB,6CAA2B;IACzB,UAAU,EAAE,WAAW;IACvB,MAAM,EAAE,IAAI;IACZ,cAAc,EAAE,SAAS;IACzB,WAAW,EAAE,GAAG;IAChB,OAAO,EAAE,IAAI;IACb,OAAO,EAAE,CAAC;IACV,MAAM,EAAE,OAAO",
+"sources": ["../../../scss/partials/VideoScreen/VideoDescription.scss"],
+"names": [],
+"file": "VideoDescription.css"
+}
