@@ -379,6 +379,18 @@ template {
     font-weight: bold;
     font-size: 14px; }
 
+@media (min-width: 768px) {
+  .main-nav {
+    position: relative; }
+    .main-nav .search-bar {
+      max-width: 400px;
+      order: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-70%); }
+    .main-nav .sign-out {
+      order: 3; } }
 .search-bar {
   padding-top: 20px;
   text-align: center;
@@ -389,6 +401,9 @@ template {
     border-radius: 5px;
     border-radius: 3px;
     flex: 1; }
+  .search-bar button {
+    background: none;
+    border: none; }
 
 .side-bar {
   position: absolute;

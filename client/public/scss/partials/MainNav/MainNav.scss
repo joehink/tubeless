@@ -28,3 +28,20 @@
     font-size: 14px;
   }
 }
+
+@media(min-width: 768px) {
+  .main-nav {
+    position: relative;
+    .search-bar {
+      max-width: 400px;
+      order: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-70%);
+    }
+    .sign-out {
+      order: 3;
+    }
+  }
+}

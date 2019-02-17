@@ -23,4 +23,17 @@
     font-weight: bold;
     font-size: 14px; }
 
+@media (min-width: 768px) {
+  .main-nav {
+    position: relative; }
+    .main-nav .search-bar {
+      max-width: 400px;
+      order: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-70%); }
+    .main-nav .sign-out {
+      order: 3; } }
+
 /*# sourceMappingURL=MainNav.css.map */
