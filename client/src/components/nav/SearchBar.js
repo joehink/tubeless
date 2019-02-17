@@ -15,12 +15,9 @@ class SearchBar extends Component {
     if (window.innerWidth < 768) {
       this.props.closeSideBar();
     }
-    
+
     // stop page from refreshing when form is submitted
     event.preventDefault();
-
-    // Clears results before every new search
-    this.props.clearSearchResults();
 
     // redirect user to '/search/whateverTheyTypedIn'
     this.props.history.push(`/search/${this.state.searchTerm}`);

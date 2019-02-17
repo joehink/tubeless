@@ -30,6 +30,9 @@ class SearchScreen extends Component {
 
     // if the new term is different from th old term
     if (oldTerm !== newTerm) {
+      // Clears results before every new search
+      this.props.clearSearchResults();
+      
       // search for new videos
       this.props.searchVideos(
         this.props.auth.accessToken,
