@@ -2,14 +2,18 @@
   background: #F5F5F5;
   display: flex;
   align-items: center;
-  padding: 10px 20px;
-}
-.channel-header p {
-  margin: 0 0 10px 15px;
-  font-size: 18px;
-}
-.channel-header .sub-btn {
-  margin: 0 0 0 15px;
-}
+  padding: 10px 20px; }
+  .channel-header p {
+    margin: 0 0 10px 15px;
+    font-size: 18px; }
+  .channel-header .sub-btn {
+    margin: 0 0 0 15px; }
+  .channel-header .container {
+    display: flex;
+    align-items: center; }
+
+@media (min-width: 768px) {
+  .channel-header .container {
+    padding-left: 25px; } }
 
 /*# sourceMappingURL=ChannelHeader.css.map */

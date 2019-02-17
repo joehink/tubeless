@@ -313,6 +313,7 @@ template {
   height: 100%; }
 
 .container {
+  width: 100%;
   max-width: 1300px;
   margin: 0 auto; }
 
@@ -455,7 +456,13 @@ template {
     font-size: 18px; }
   .channel-header .sub-btn {
     margin: 0 0 0 15px; }
+  .channel-header .container {
+    display: flex;
+    align-items: center; }
 
+@media (min-width: 768px) {
+  .channel-header .container {
+    padding-left: 25px; } }
 .video-grid {
   padding: 40px 20px 0; }
 

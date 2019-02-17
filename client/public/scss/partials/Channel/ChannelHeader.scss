@@ -10,4 +10,16 @@
   .sub-btn {
     margin: 0 0 0 15px
   }
+  .container {
+    display: flex;
+    align-items: center
+  }
+}
+
+@media(min-width: 768px) {
+  .channel-header {
+    .container {
+      padding-left: 25px;
+    }
+  }
 }
