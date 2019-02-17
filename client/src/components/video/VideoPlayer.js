@@ -5,7 +5,7 @@ const VideoPlayer = (props) => {
     <iframe
       title={props.videoId}
       className="video-player"
-      src={`https://www.youtube.com/embed/${props.videoId}`}
+      src={`https://www.youtube.com/embed/${props.videoId}?autoplay=1`}
       frameBorder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen

@@ -1,6 +1,9 @@
 .video-player {
   width: 100%;
-  height: calc(100vw * 9 / 16);
-}
+  height: calc(100vw * 9 / 16); }
+
+@media (min-width: 768px) {
+  .video-player {
+    max-height: 600px; } }
 
 /*# sourceMappingURL=VideoPlayer.css.map */

@@ -32,19 +32,22 @@ class VideoScreen extends Component {
     return (
       <div className="video-screen">
         <VideoPlayer videoId={this.props.video.id} />
-        <VideoInfo
-          title={this.props.video.snippet.title}
-          views={this.props.video.statistics.viewCount}
-        />
-        <ChannelInfo
-          thumbnail={this.props.video.snippet.channelThumbnail}
-          channelTitle={this.props.video.snippet.channelTitle}
-          publishedAt={this.props.video.snippet.publishedAt}
-          channelId={this.props.video.snippet.channelId}
-        />
-        <VideoDescription
-          description={this.props.video.snippet.description}
-        />
+        <div className="container">
+          <VideoInfo
+            title={this.props.video.snippet.title}
+            views={this.props.video.statistics.viewCount}
+          />
+          <hr />
+          <ChannelInfo
+            thumbnail={this.props.video.snippet.channelThumbnail}
+            channelTitle={this.props.video.snippet.channelTitle}
+            publishedAt={this.props.video.snippet.publishedAt}
+            channelId={this.props.video.snippet.channelId}
+          />
+          <VideoDescription
+            description={this.props.video.snippet.description}
+          />
+        </div>
       </div>
     )
   }

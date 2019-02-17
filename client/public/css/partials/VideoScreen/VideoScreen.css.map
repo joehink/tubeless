@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":["../../../scss/partials/VideoScreen/VideoScreen.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA","file":"VideoScreen.css"}
+{
+"version": 3,
+"mappings": "AAAA,aAAc;EACZ,IAAI,EAAE,CAAC;EACP,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,MAAM;EAClB,gBAAG;IACD,gBAAgB,EAAE,SAAS;IAC3B,MAAM,EAAE,GAAG;IACX,MAAM,EAAE,CAAC;IACT,UAAU,EAAE,cAAc;IAC1B,MAAM,EAAE,aAAa",
+"sources": ["../../../scss/partials/VideoScreen/VideoScreen.scss"],
+"names": [],
+"file": "VideoScreen.css"
+}

@@ -6,8 +6,10 @@ class VideoInfo extends Component {
     return (
       <div className="video-info">
         <h3>{ this.props.title }</h3>
-        {/* add commas to views */}
-        <p>{this.props.views.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} views</p>
+        <p className="views">
+          {/* add commas to views */}
+          {this.props.views.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} views
+        </p>
       </div>
     );
   }

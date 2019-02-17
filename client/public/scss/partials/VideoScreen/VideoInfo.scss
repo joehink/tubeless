@@ -4,4 +4,16 @@
     margin: 0;
     word-wrap: break-word;
   }
+  .views {
+    margin-bottom: 0;
+  }
+}
+
+@media(min-width: 768px) {
+  .video-info {
+    h3 {
+      font-size: 22px;
+      margin-top: 18px;
+    }
+  }
 }

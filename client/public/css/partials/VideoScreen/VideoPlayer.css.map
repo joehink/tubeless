@@ -1,1 +1,7 @@
-{"version":3,"sourceRoot":"","sources":["../../../scss/partials/VideoScreen/VideoPlayer.scss"],"names":[],"mappings":"AAAA;EACE;EACA","file":"VideoPlayer.css"}
+{
+"version": 3,
+"mappings": "AAAA,aAAc;EACZ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,oBAAoB;;AAG9B,yBAAyB;EACvB,aAAc;IACZ,UAAU,EAAE,KAAK",
+"sources": ["../../../scss/partials/VideoScreen/VideoPlayer.scss"],
+"names": [],
+"file": "VideoPlayer.css"
+}

@@ -1,9 +1,14 @@
 .video-info {
-  padding: 10px 15px;
-}
-.video-info h3 {
-  margin: 0;
-  word-wrap: break-word;
-}
+  padding: 10px 15px; }
+  .video-info h3 {
+    margin: 0;
+    word-wrap: break-word; }
+  .video-info .views {
+    margin-bottom: 0; }
+
+@media (min-width: 768px) {
+  .video-info h3 {
+    font-size: 22px;
+    margin-top: 18px; } }
 
 /*# sourceMappingURL=VideoInfo.css.map */
