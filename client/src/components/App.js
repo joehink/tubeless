@@ -9,6 +9,7 @@ import SideBar from "./sidebar/SideBar";
 import SearchScreen from "./search/SearchScreen";
 import ChannelScreen from "./channel/ChannelScreen";
 import VideoScreen from "./video/VideoScreen";
+import Spinner from "./Spinner";
 
 class App extends Component {
   componentDidMount() {
@@ -34,7 +35,7 @@ class App extends Component {
     switch (this.props.auth) {
       case null:
         // waiting for fetchUser to complete
-        return <div></div>
+        return <div className="spinner-wrapper"><Spinner /></div>
       case false:
         // no user logged in
         return <Landing />

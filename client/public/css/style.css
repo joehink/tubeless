@@ -355,6 +355,12 @@ template {
   text-align: center;
   margin: 50px auto; }
 
+.spinner-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 .main-nav {
   display: flex;
   justify-content: space-between;

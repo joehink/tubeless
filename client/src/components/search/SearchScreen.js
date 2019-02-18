@@ -32,7 +32,7 @@ class SearchScreen extends Component {
     if (oldTerm !== newTerm) {
       // Clears results before every new search
       this.props.clearSearchResults();
-      
+
       // search for new videos
       this.props.searchVideos(
         this.props.auth.accessToken,
@@ -49,11 +49,13 @@ class SearchScreen extends Component {
   handleScroll(event) {
     // select video result item element
     const videoResultItem = document.querySelector(".video-result-list-item");
+    // select search screen element
+    const searchScreen = document.querySelector(".search-screen");
 
     // if video result item has been rendered
     if (videoResultItem) {
       // threshold = height of video result list - 5 video result items
-      const threshold = event.target.scrollHeight - (videoResultItem.clientHeight * 5);
+      const threshold = searchScreen.scrollHeight - (videoResultItem.clientHeight * 8);
 
       // if the scrollTop location passes the threshold
       // and there is not a request currently happening
