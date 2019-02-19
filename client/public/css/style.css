@@ -486,8 +486,7 @@ template {
     color: black;
     text-decoration: none; }
   .video-grid-item h3 {
-    margin: 10px 0 0;
-    word-break: break-all; }
+    margin: 10px 0 0; }
   .video-grid-item p {
     margin: 10px 0 0; }
   .video-grid-item .duration {
@@ -607,8 +606,7 @@ template {
     -webkit-line-clamp: 2;
     line-height: 20px;
     max-height: 40px;
-    margin-bottom: 0;
-    word-break: break-all; }
+    margin-bottom: 0; }
 
 .video-result-list {
   padding: 20px; }
