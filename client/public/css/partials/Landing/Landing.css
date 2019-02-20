@@ -1,0 +1,56 @@
+.landing {
+  height: 100%;
+  background: url("../images/landing-bg.png") center/cover;
+  filter: grayscale(25%);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .landing .landing-content {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+  .landing .sign-in {
+    display: inline-block;
+    background: #232323;
+    color: white;
+    padding: 10px 30px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 20px;
+    transition: all .5s; }
+  .landing .sign-in:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25); }
+
+@-webkit-keyframes animate_background {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: 50vw 0; } }
+@-moz-keyframes animate_background {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: 50vw 0; } }
+@-o-keyframes animate_background {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: 50vw 0; } }
+@keyframes animate_background {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: 50vw 0; } }
+@media (min-width: 768px) {
+  .landing {
+    -webkit-animation: animate_background 45s linear 0s infinite;
+    -moz-animation: animate_background 45s linear 0s infinite;
+    -o-animation: animate_background 45s linear 0s infinite;
+    animation: animate_background 45s linear 0s infinite; } }
+
+/*# sourceMappingURL=Landing.css.map */
