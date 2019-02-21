@@ -2,7 +2,9 @@ import axios from "axios";
 import {
   FETCH_VIDEO_SUCCESS,
   FETCH_VIDEO_FAILURE,
-  RESET_VIDEO
+  RESET_VIDEO,
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE
 } from "./types";
 
 export const fetchVideo = (accessToken, videoId) => async dispatch => {
@@ -36,6 +38,12 @@ export const fetchVideo = (accessToken, videoId) => async dispatch => {
 
   } catch (err) {
     console.error(err);
-    dispatch({ type: FETCH_VIDEO_FAILURE })
+    try {
+      const user = await axios.get("/api/refresh_token");
+      dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
+    } catch(err) {
+      console.error(err);
+      dispatch({ type: FETCH_VIDEO_FAILURE });
+    }
   }
 }

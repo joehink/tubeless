@@ -6,7 +6,9 @@ import {
   SEARCHING_FOR_CHANNELS,
   FETCH_CHANNEL_SEARCH_SUCCESS,
   FETCH_CHANNEL_SEARCH_FAILURE,
-  CLEAR_SEARCH_RESULTS
+  CLEAR_SEARCH_RESULTS,
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE
 } from "./types";
 
 export const searchVideos = (accessToken, searchTerm, pageToken = '') => {
@@ -61,7 +63,13 @@ export const searchVideos = (accessToken, searchTerm, pageToken = '') => {
     } catch(error) {
       console.error(error);
       // something went wrong with request
-      dispatch({ type: FETCH_VIDEO_SEARCH_FAILURE })
+      try {
+        const user = await axios.get("/api/refresh_token");
+        dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
+      } catch(err) {
+        console.error(err);
+        dispatch({ type: FETCH_VIDEO_SEARCH_FAILURE });
+      }
     }
   };
 }

@@ -1,5 +1,6 @@
 const passport = require('passport');
 const YoutubeV3Strategy = require('passport-youtube-v3').Strategy
+const refresh = require('passport-oauth2-refresh')
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
@@ -16,9 +17,7 @@ passport.deserializeUser(async (id, done) => {
     done(null, user);
 })
 
-// Create YouTube passport strategy
-// Strategy is what handles the auth process
-passport.use(new YoutubeV3Strategy({
+const strategy = new YoutubeV3Strategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
     callbackURL: keys.callbackURL,
@@ -32,9 +31,9 @@ passport.use(new YoutubeV3Strategy({
       // Use it to find the user in our db with that ID
       let existingUser = await User.findOne({ googleID: profile.id });
 
-      // If there is a user in our db with that ID
+      // // If there is a user in our db with that ID
       if (existingUser) {
-        existingUser = await User.findByIdAndUpdate(existingUser.id, { accessToken, refreshToken })
+        existingUser = await User.findByIdAndUpdate(existingUser.id, { accessToken, refreshToken }, {new: true})
           return done(null, existingUser);
       }
 
@@ -48,5 +47,10 @@ passport.use(new YoutubeV3Strategy({
 
       done(null, user);
     });
-  })
-)
+  });
+
+// Create YouTube passport strategy
+// Strategy is what handles the auth process
+passport.use(strategy);
+
+refresh.use(strategy);

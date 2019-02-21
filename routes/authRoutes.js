@@ -1,7 +1,8 @@
 const passport = require('passport');
-const { google } = require('googleapis');
-const OAuth2 = google.auth.OAuth2;
+const axios = require('axios');
 const { userLoggedIn } = require('../middlewares/index');
+const mongoose = require('mongoose');
+const User = mongoose.model('users')
 
 const keys = require('../config/keys');
 
@@ -27,23 +28,27 @@ module.exports = app => {
 
     // When route hit, send back JSON data for user
     app.get('/api/current_user', userLoggedIn, (req, res) => {
-      res.send(req.user)
+        res.send(req.user)
+    })
 
-      
-      // var oauth2Client = OAuth2(
-      //   keys.clientID,
-      //   keys.clientSecret,
-      //   keys.callbackURL
-      // );
-      //
-      // oauth2Client.credentials = {
-      //   access_token: req.user.access_token,
-      //   refresh_token: req.user.refresh_token
-      // };
-      //
-      // console.log(google.youtube({
-      //     version: 'v3',
-      //     auth: oauth2Client
-      // }));
+    app.get('/api/refresh_token', async (req, res) => {
+      const response = await axios({
+        method: 'POST',
+        url: 'https://www.googleapis.com/oauth2/v4/token',
+        data: {
+          client_id: keys.googleClientID,
+          client_secret: keys.googleClientSecret,
+          refresh_token: req.user.refreshToken,
+          grant_type: 'refresh_token'
+        }
+      })
+
+      const user = await User.findByIdAndUpdate(req.user.id, {
+        accessToken: response.data.access_token
+      }, {new: true})
+
+      req.user = user;
+
+      res.send(req.user);
     })
 }
