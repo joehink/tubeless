@@ -7,8 +7,7 @@ import {
   FETCH_CHANNEL_SUCCESS,
   FETCH_CHANNEL_FAILURE,
   CLEAR_CHANNEL,
-  FETCH_USER_SUCCESS,
-  FETCH_USER_FAILURE
+  FETCH_USER_SUCCESS
 } from "../actions/types";
 
 export const fetchChannel = (accessToken, channelId) => {

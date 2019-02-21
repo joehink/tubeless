@@ -3,8 +3,7 @@ import {
   FETCH_VIDEO_SUCCESS,
   FETCH_VIDEO_FAILURE,
   RESET_VIDEO,
-  FETCH_USER_SUCCESS,
-  FETCH_USER_FAILURE
+  FETCH_USER_SUCCESS
 } from "./types";
 
 export const fetchVideo = (accessToken, videoId) => async dispatch => {

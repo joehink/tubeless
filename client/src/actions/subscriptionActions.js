@@ -10,8 +10,7 @@ import {
   ADD_SUBSCRIPTION_FAILURE,
   REMOVE_SUBSCRIPTION_SUCCESS,
   REMOVE_SUBSCRIPTION_FAILURE,
-  FETCH_USER_SUCCESS,
-  FETCH_USER_FAILURE
+  FETCH_USER_SUCCESS
 } from "./types";
 
 export const fetchSubscriptions = accessToken => async dispatch => {

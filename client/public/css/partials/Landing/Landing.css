@@ -9,11 +9,20 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    padding: 40px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; }
+  .landing img {
+    width: 90%;
+    max-width: 250px; }
+  .landing h1 {
+    font-family: 'Patua One', cursive;
+    font-weight: 400;
+    font-size: 40px; }
   .landing .sign-in {
     display: inline-block;
     background: #232323;

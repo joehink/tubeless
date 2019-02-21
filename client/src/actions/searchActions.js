@@ -7,8 +7,7 @@ import {
   FETCH_CHANNEL_SEARCH_SUCCESS,
   FETCH_CHANNEL_SEARCH_FAILURE,
   CLEAR_SEARCH_RESULTS,
-  FETCH_USER_SUCCESS,
-  FETCH_USER_FAILURE
+  FETCH_USER_SUCCESS
 } from "./types";
 
 export const searchVideos = (accessToken, searchTerm, pageToken = '') => {
