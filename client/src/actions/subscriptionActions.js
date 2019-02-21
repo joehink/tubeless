@@ -10,7 +10,8 @@ import {
   ADD_SUBSCRIPTION_FAILURE,
   REMOVE_SUBSCRIPTION_SUCCESS,
   REMOVE_SUBSCRIPTION_FAILURE,
-  FETCH_USER_SUCCESS
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE
 } from "./types";
 
 export const fetchSubscriptions = accessToken => async dispatch => {
@@ -34,13 +35,14 @@ export const fetchSubscriptions = accessToken => async dispatch => {
 
   } catch(error) {
     // something went wrong with the request
+    dispatch({ type: FETCH_SUBSCRIPTIONS_FAILURE });
     console.error(error);
     try {
       const user = await axios.get("/api/refresh_token");
       dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
     } catch(err) {
       console.error(err);
-      dispatch({ type: FETCH_SUBSCRIPTIONS_FAILURE });
+      dispatch({ type: FETCH_USER_FAILURE });
     }
   }
 }

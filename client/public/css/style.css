@@ -371,7 +371,8 @@ template {
   border-bottom: 1px solid #DDD;
   z-index: 1; }
   .main-nav .sidebar-toggle {
-    font-size: 24px; }
+    font-size: 24px;
+    cursor: pointer; }
   .main-nav .brand-img {
     margin: 0 auto 0 10px; }
   .main-nav .search-bar {

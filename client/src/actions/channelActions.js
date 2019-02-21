@@ -7,7 +7,8 @@ import {
   FETCH_CHANNEL_SUCCESS,
   FETCH_CHANNEL_FAILURE,
   CLEAR_CHANNEL,
-  FETCH_USER_SUCCESS
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE
 } from "../actions/types";
 
 export const fetchChannel = (accessToken, channelId) => {
@@ -42,12 +43,13 @@ export const fetchChannel = (accessToken, channelId) => {
     } catch (error) {
       console.error(error);
       // Something went wrong with the request
+      dispatch({ type: FETCH_CHANNEL_FAILURE });
       try {
         const user = await axios.get("/api/refresh_token");
         dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
       } catch(err) {
         console.error(err);
-        dispatch({ type: FETCH_CHANNEL_FAILURE });
+        dispatch({ type: FETCH_USER_FAILURE });
       }
     }
   }
