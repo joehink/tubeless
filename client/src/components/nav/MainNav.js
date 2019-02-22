@@ -27,11 +27,8 @@ class MainNav extends Component {
           className="fas fa-bars sidebar-toggle"
           onClick={() => this.props.toggleSideBar()}
         ></i>
-        <img
-          className="brand-img"
-          width="100"
-          src="/images/logo.png" alt="YouTube logo"
-        />
+
+        <span className="brand-title">Tubeless</span>
         <SearchBar />
         <a className="sign-out" href="/api/logout">
           Sign Out

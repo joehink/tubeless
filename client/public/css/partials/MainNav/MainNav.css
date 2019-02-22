@@ -10,8 +10,11 @@
   .main-nav .sidebar-toggle {
     font-size: 24px;
     cursor: pointer; }
-  .main-nav .brand-img {
-    margin: 0 auto 0 10px; }
+  .main-nav .brand-title {
+    font-family: 'Patua One', cursive;
+    font-size: 27px;
+    margin: 0 auto 0 15px;
+    cursor: pointer; }
   .main-nav .search-bar {
     order: 3;
     width: 100%; }

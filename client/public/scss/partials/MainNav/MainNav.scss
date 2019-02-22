@@ -11,8 +11,11 @@
     font-size: 24px;
     cursor: pointer;
   }
-  .brand-img {
-    margin: 0 auto 0 10px;
+  .brand-title {
+    font-family: 'Patua One', cursive;
+    font-size: 27px;
+    margin: 0 auto 0 15px;
+    cursor: pointer;
   }
   .search-bar {
     order: 3;
@@ -47,7 +50,6 @@
     .profile-img {
       display: block;
       border-radius: 100%;
-      // box-shadow: 0 0 10px rgba(0,0,0,0.25);
       width: 32px;
       margin-left: 15px;
       order: 4
