@@ -17,12 +17,13 @@
     align-items: center;
     justify-content: center; }
   .landing img {
-    width: 90%;
+    width: 75%;
     max-width: 250px; }
   .landing h1 {
     font-family: 'Patua One', cursive;
     font-weight: 400;
-    font-size: 40px; }
+    font-size: 40px;
+    margin-top: 5px; }
   .landing .sign-in {
     display: inline-block;
     background: #232323;
