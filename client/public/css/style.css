@@ -398,7 +398,13 @@ template {
       left: 50%;
       transform: translateX(-50%) translateY(-70%); }
     .main-nav .sign-out {
-      order: 3; } }
+      order: 3; }
+    .main-nav .profile-img {
+      display: block;
+      border-radius: 100%;
+      width: 32px;
+      margin-left: 15px;
+      order: 4; } }
 .search-bar {
   padding-top: 20px;
   text-align: center;
