@@ -9,6 +9,7 @@ import SideBar from "./sidebar/SideBar";
 import SearchScreen from "./search/SearchScreen";
 import ChannelScreen from "./channel/ChannelScreen";
 import VideoScreen from "./video/VideoScreen";
+import HomeScreen from "./HomeScreen";
 import Spinner from "./Spinner";
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
               <Route path="/search/:searchTerm" component={SearchScreen} />
               <Route path="/channel/:id" component={ChannelScreen} />
               <Route path="/video/:id" component={VideoScreen} />
+              <Route exact path="/" component={HomeScreen} />
             </div>
         </div>
       </Router>

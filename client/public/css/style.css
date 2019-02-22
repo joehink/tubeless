@@ -683,6 +683,27 @@ template {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+.home-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1; }
+  .home-screen .subscription-icon {
+    width: 80%;
+    max-width: 400px;
+    opacity: .3; }
+  .home-screen p {
+    font-family: 'Patua One', cursive;
+    font-size: 24px;
+    text-align: center;
+    padding: 0 15px;
+    line-height: 1.5; }
+  .home-screen span {
+    opacity: .5;
+    display: inline-block;
+    margin: 0 2.5px; }
+
 .landing {
   height: 100%;
   background: url("../images/landing-bg.png") center/cover;
