@@ -107,9 +107,13 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
       console.error(error);
       // something went wrong with the request
       try {
-        const user = await axios.get("/api/refresh_token");
-        dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
-        window.location.reload();
+        if (error.response.status === 401) {
+          const user = await axios.get("/api/refresh_token");
+          dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
+          window.location.reload();
+        } else {
+          dispatch({ type: FETCH_CHANNEL_VIDEOS_FAILURE });
+        }
       } catch(err) {
         console.error(err);
         dispatch({ type: FETCH_USER_FAILURE });
