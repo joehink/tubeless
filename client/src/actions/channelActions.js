@@ -42,15 +42,8 @@ export const fetchChannel = (accessToken, channelId) => {
 
     } catch (error) {
       console.error(error);
-      // Something went wrong with the request
       dispatch({ type: FETCH_CHANNEL_FAILURE });
-      try {
-        const user = await axios.get("/api/refresh_token");
-        dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
-      } catch(err) {
-        console.error(err);
-        dispatch({ type: FETCH_USER_FAILURE });
-      }
+      // Something went wrong with the request
     }
   }
 }
@@ -73,7 +66,7 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
           access_token: accessToken,
           part: "snippet",
           type: "video",
-          maxResults: 25,
+          maxResults: 48,
           order: "date",
           channelId,
           pageToken
@@ -113,7 +106,15 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
     } catch (error) {
       console.error(error);
       // something went wrong with the request
-      dispatch({ type: FETCH_CHANNEL_VIDEOS_FAILURE });
+      try {
+        const user = await axios.get("/api/refresh_token");
+        dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
+        window.location.reload();
+      } catch(err) {
+        console.error(err);
+        dispatch({ type: FETCH_USER_FAILURE });
+        dispatch({ type: FETCH_CHANNEL_VIDEOS_FAILURE });
+      }
     }
   }
 }

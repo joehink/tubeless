@@ -38,12 +38,14 @@ export const fetchVideo = (accessToken, videoId) => async dispatch => {
 
   } catch (err) {
     console.error(err);
-    dispatch({ type: FETCH_VIDEO_FAILURE });
+
     try {
       const user = await axios.get("/api/refresh_token");
       dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
+      window.location.reload();
     } catch(err) {
       console.error(err);
+      dispatch({ type: FETCH_VIDEO_FAILURE });
       dispatch({ type: FETCH_USER_FAILURE });
     }
   }

@@ -14,7 +14,7 @@ import {
 const INITIAL_STATE = {
   subOrUnsub: false,
   list: [],
-  loading: false,
+  loading: true,
   pageToken: ''
 }
 

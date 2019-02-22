@@ -35,13 +35,14 @@ export const fetchSubscriptions = accessToken => async dispatch => {
 
   } catch(error) {
     // something went wrong with the request
-    dispatch({ type: FETCH_SUBSCRIPTIONS_FAILURE });
     console.error(error);
     try {
       const user = await axios.get("/api/refresh_token");
       dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
+      window.location.reload();
     } catch(err) {
       console.error(err);
+      dispatch({ type: FETCH_SUBSCRIPTIONS_FAILURE });
       dispatch({ type: FETCH_USER_FAILURE });
     }
   }
