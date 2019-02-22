@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { toggleSideBar, closeSideBar } from "../../actions";
+import { Link } from "react-router-dom"
 
 import SearchBar from "./SearchBar";
 
@@ -28,7 +29,7 @@ class MainNav extends Component {
           onClick={() => this.props.toggleSideBar()}
         ></i>
 
-        <span className="brand-title">Tubeless</span>
+        <Link to='/' className="brand-title">Tubeless</Link>
         <SearchBar />
         <a className="sign-out" href="/api/logout">
           Sign Out
