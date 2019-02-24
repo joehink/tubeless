@@ -21,6 +21,7 @@ const strategy = new YoutubeV3Strategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
     callbackURL: keys.callbackURL,
+    proxy: true,
     scope: ['https://www.googleapis.com/auth/youtube'],
     authorizationParams: {
       access_type : 'offline'
