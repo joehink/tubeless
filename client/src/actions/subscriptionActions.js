@@ -34,20 +34,27 @@ export const fetchSubscriptions = accessToken => async dispatch => {
     dispatch({ type: FETCH_SUBSCRIPTIONS_SUCCESS, payload: res.data.items });
 
   } catch(error) {
-    // something went wrong with the request
     console.error(error);
+    // something went wrong with the request
     try {
+      // if error status code is 401
       if (error.response.status === 401) {
+        // make request to refresh access token
+        // fetch returns logged in user with new access token
         const user = await axios.get("/api/refresh_token");
+        // save new user object to redux state
         dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
+        // refresh the page
         window.location.reload();
       } else {
+        // error code was not 401
         dispatch({ type: FETCH_SUBSCRIPTIONS_FAILURE });
       }
     } catch(err) {
+      // something went wrong with refresh token request
       console.error(err);
-      dispatch({ type: FETCH_SUBSCRIPTIONS_FAILURE });
       dispatch({ type: FETCH_USER_FAILURE });
+      dispatch({ type: FETCH_SUBSCRIPTIONS_FAILURE });
     }
   }
 }

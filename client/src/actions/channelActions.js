@@ -42,8 +42,8 @@ export const fetchChannel = (accessToken, channelId) => {
 
     } catch (error) {
       console.error(error);
-      dispatch({ type: FETCH_CHANNEL_FAILURE });
       // Something went wrong with the request
+      dispatch({ type: FETCH_CHANNEL_FAILURE });
     }
   }
 }
@@ -107,14 +107,21 @@ export const fetchChannelVideos = (accessToken, channelId, pageToken = '') => {
       console.error(error);
       // something went wrong with the request
       try {
+        // if error status code is 401
         if (error.response.status === 401) {
+          // make request to refresh access token
+          // fetch returns logged in user with new access token
           const user = await axios.get("/api/refresh_token");
+          // save new user object to redux state
           dispatch({ type: FETCH_USER_SUCCESS, payload: user.data });
+          // refresh the page
           window.location.reload();
         } else {
+          // error code was not 401
           dispatch({ type: FETCH_CHANNEL_VIDEOS_FAILURE });
         }
       } catch(err) {
+        // something went wrong with refresh token request
         console.error(err);
         dispatch({ type: FETCH_USER_FAILURE });
         dispatch({ type: FETCH_CHANNEL_VIDEOS_FAILURE });
